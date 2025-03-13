@@ -5,3 +5,5 @@ package ch1.section3.sub;
 //패키지만 다르다면 문제 없다..
 class Some2 { }
 class Some3 { }
+
+class Some5 {}
