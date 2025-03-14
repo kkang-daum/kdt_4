@@ -15,7 +15,7 @@ public class Exam5 {
 
     }
     void some2() {
-        
+
     }
 }
 class A {
