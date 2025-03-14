@@ -6,4 +6,4 @@ package ch1.section3.sub;
 class Some2 { }
 class Some3 { }
 
-class Some5 {}
+public class Exam1_2 {}
