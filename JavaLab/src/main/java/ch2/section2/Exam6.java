@@ -13,15 +13,27 @@ public class Exam6 {
         }
         System.out.println("1~10 : " + sum);//1~10 : 55
 
+
+
+
         //1~10 더하기, 짝수만...
         sum = 0;
+
         i = 1;
+
         while (i <= 10){
+
             if(i % 2 == 0){
+
                 sum += i;
+
             }
+
             i++;
         }
+
+
+
         System.out.println("1~10 짝수 : " + sum);//1~10 짝수 : 30
 
         //구구단 찍기.. 2단부터 9단까지..
