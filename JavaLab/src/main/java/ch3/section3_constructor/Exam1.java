@@ -63,3 +63,18 @@ public class Exam1 {
         System.out.println(obj.name + "," + obj2.name + "," + obj2.score);//kim,lee,100
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
