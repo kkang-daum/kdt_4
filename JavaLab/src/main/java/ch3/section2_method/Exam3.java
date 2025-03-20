@@ -13,6 +13,7 @@ public class Exam3 {
             System.out.print(data + " ");
         }
         System.out.println();
+
     }
 
     //가변인수와 다른 인수를 같이 선언도 가능..
