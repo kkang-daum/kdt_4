@@ -99,6 +99,6 @@ public class Exam2 {
         ITest4 obj4 = new Sub1();
 
         Object obj5 = new Sub1();
-        
+
     }
 }
