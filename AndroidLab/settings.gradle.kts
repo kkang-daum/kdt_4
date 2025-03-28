@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "AndroidLab"
 include(":app")
+include(":ch2")
