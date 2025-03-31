@@ -29,6 +29,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+    //viewBinding 선언 설정..
+    //이 설정만으로.. layout xml 에 해당되는 Binding 클래스가 자동 만들어진다..
+    //build.gradle.kts 가 변경되면 꼭 sync now 클릭해서.. 반영해야 한다..
+    viewBinding.isEnabled = true
 }
 
 dependencies {
