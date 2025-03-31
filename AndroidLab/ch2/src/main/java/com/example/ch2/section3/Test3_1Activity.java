@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.ch2.R;
 import com.example.ch2.databinding.ActivityTest31Binding;
 
+
 public class Test3_1Activity extends AppCompatActivity {
 
 //    Button visibleBtn;
