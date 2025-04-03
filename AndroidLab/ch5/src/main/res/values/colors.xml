@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+<!--    개별적으로 사용되는 색상을 등록하는 곳... -->
+    <color name="txt_color">#FFFF00</color>
+    <color name="txt_bg_color">#FF0000</color>
 </resources>
