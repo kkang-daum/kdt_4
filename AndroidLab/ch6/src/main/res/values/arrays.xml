@@ -4,7 +4,8 @@
     R.array.location
 -->
     <string-array name="location">
-        <item>서울시</item>
+        <item>서울시 송파구</item>
+        <item>서울시 강남구</item>
         <item>경기도</item>
         <item>부산시</item>
         <item>대전시</item>

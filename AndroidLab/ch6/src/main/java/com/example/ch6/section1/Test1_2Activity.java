@@ -40,7 +40,7 @@ public class Test1_2Activity extends AppCompatActivity {
         for(int i = 1; i <= 10; i++){
             list.add("Item "+ i);
         }
-        
+
         binding.main.setAdapter(new MyAdapter(list));
         //adapter 가 만들어놓은 항목을 배치하는 역할자.. 세로방행..
         binding.main.setLayoutManager(new LinearLayoutManager(this));
