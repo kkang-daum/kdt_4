@@ -36,5 +36,7 @@ public class Test2_1Activity extends AppCompatActivity {
         binding.spinner.setAdapter(adapter1);
 
         binding.autoView.setAdapter(adapter1);
+
+
     }
 }
