@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    custom view 에 custom attributes 를 사용하고 싶다..
+기본으로 빌더가 인지 못하는 속성이 추가되면 에러난다..
+만약 사용하겠다면.. 선언부터 해야 한다..-->
+    <declare-styleable name="MyView">
+        <attr name="customTextColor" format="color"/>
+    </declare-styleable>
+</resources>

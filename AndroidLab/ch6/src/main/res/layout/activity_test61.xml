@@ -19,4 +19,10 @@
         android:layout_height="wrap_content"
         android:text="-10"/>
 
+    <com.example.ch6.section6.MyPlusMinusView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/customView"
+        app:customTextColor = "#0000ff"/>
+
 </LinearLayout>
