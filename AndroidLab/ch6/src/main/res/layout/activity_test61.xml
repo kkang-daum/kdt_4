@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".section6.Test6_1Activity"
+    android:orientation="vertical">
+
+<!--    custom view 도 뷰이다. layout xml 등록해서 화면 구성 가능하다..
+단 platform api 가 아님으로 full package -->
+    <com.example.ch6.section6.MyTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10"/>
+    <com.example.ch6.section6.MyTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-10"/>
+
+</LinearLayout>
