@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<!--앱의 컴포넌트를 보호하기 위한 퍼미션 선언... -->
+    <permission android:name="com.example.ch7_outer.ONE_PERMISSION"
+        android:label="One Label"
+        android:description="@string/desc_one"
+        android:protectionLevel="normal"/>
+
+    <permission android:name="com.example.ch7_outer.TWO_PERMISSION"
+        android:label="Two Label"
+        android:description="@string/desc_two"
+        android:protectionLevel="dangerous"/>
 
     <application
         android:allowBackup="true"
@@ -10,7 +20,8 @@
         android:theme="@style/Theme.AndroidLab">
         <activity
             android:name=".TwoActivity"
-            android:exported="true" >
+            android:exported="true"
+            android:permission="com.example.ch7_outer.TWO_PERMISSION">
             <intent-filter>
                 <action android:name="CH7_ACTION_TWO"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -18,7 +29,8 @@
         </activity>
         <activity
             android:name=".OneActivity"
-            android:exported="true" >
+            android:exported="true"
+            android:permission="com.example.ch7_outer.ONE_PERMISSION">
             <intent-filter>
                 <action android:name="CH7_ACTION_ONE"/>
                 <category android:name="android.intent.category.DEFAULT"/>
