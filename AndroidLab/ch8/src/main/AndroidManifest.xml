@@ -9,12 +9,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLab">
         <activity
+            android:name=".section2.Test2_1Activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".section1.Sub2Activity"
             android:exported="false" />
         <activity
             android:name=".section1.Sub1Activity"
             android:exported="false"
-            android:parentActivityName=".section1.Test1_1Activity"/>
+            android:parentActivityName=".section1.Test1_1Activity" />
         <activity
             android:name=".section1.Test1_1Activity"
             android:exported="true">
