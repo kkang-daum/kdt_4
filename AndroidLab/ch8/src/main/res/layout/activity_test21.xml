@@ -7,4 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".section2.Test2_1Activity">
 
+<!--
+TextView
+- setText("TextView");
+
+layout_constraintBottom_toBottomOf=""
+ConstraintLayout 에서 값을 참조해서 처리.. ConstraintLayout 은 표준이 아니다..
+-->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
