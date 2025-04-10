@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+<!--    앱이 실행되는 디바이스의 하드웨어적인 특징을 요구하겠다..
+가정.. 우리 앱이 카메라 촬영 전문 앱이다.. 앱이 설치되어 있는 디바이스에 하드웨어 카메라가 없다면?
+-->
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false"
+        />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -8,6 +18,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLab">
+        <activity
+            android:name=".section3.Test3_1Activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".section2.SomeActivity"
             android:exported="false" />
