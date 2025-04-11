@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+<!--    menu 는 actionbar 의 구성요소이다..
+기본으로 적용되는 theme 가 noactionbar 이다..
+
+theme 를 변경해서.. actionbar 가 나오게 하거나...
+Toolbar 라는 뷰가 제공된다..  actionbar를 대체하기 위한 뷰이다..
+개발자가 뷰로 제어... activity window 영역의 content 부분에.. 뷰로 직접 준비..
+platform api 도 제공되지만.. 하위호환성 문제 있다.. androidx 로 이용..-->
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar"/>
+
+</LinearLayout>
