@@ -8,8 +8,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidproject.MainActivity;
+import com.example.androidproject.R;
 import com.example.androidproject.databinding.ItemMainBinding;
 import com.example.androidproject.model.Student;
+import com.example.androidproject.util.DialogUtil;
 
 import java.util.ArrayList;
 
@@ -48,5 +50,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder>{
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
         Student student = datas.get(position);
         holder.binding.itemNameView.setText(student.getName());
+
+        holder.binding.itemImageView.setOnClickListener(view -> {
+            //이미지 상세보기로 가정.. 다이얼로그 띄운다..
+            DialogUtil.showCustomDialog(context, R.drawable.ic_student_large);
+        });
     }
 }
