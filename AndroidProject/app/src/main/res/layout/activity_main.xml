@@ -20,4 +20,9 @@ platform api 도 제공되지만.. 하위호환성 문제 있다.. androidx 로 
         android:layout_height="wrap_content"
         android:id="@+id/toolbar"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </LinearLayout>

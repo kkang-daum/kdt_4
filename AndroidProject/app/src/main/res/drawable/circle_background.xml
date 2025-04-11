@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--이미지 뷰의 포그라운드 설정해서.. 이미지뷰의 이미지가 둥근 모습처럼 보이게
+ 이미지를 여러 레이어(계층) 해서.. 겹처서.. 하나의 이미지를 만들고자 할때..
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    이 이미지가 적용되는 뷰가 있을 것이다..4방향의 사이즈는 그 뷰의 원 사이즈에서 이 레이어가
+차지하는 영역 설정..
+양수, 뷰 안으로 들어가서..
+음수, 뷰 밖으로 나와서..-->
+    <item
+        android:bottom="-10dp"
+        android:left="-10dp"
+        android:right="-10dp"
+        android:top="-10dp">
+        <shape android:shape="oval">
+            <stroke android:width="10dp" android:color="#ffffff"/>
+        </shape>
+    </item>
+</layer-list>
