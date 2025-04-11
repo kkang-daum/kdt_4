@@ -85,6 +85,13 @@ public class AddStudentActivity extends AppCompatActivity {
             //화면은????
             //MainActivity 로 화면 전환.. 데이터 포함시켜서..
             Intent intent = getIntent();
+            setResult(RESULT_OK, intent);
+            intent.putExtra("id", newRowId);
+            intent.putExtra("name", name);
+            intent.putExtra("email", email);
+            intent.putExtra("phone", phone);
+            intent.putExtra("memo", memo);
+            finish();
         }
     }
 }
