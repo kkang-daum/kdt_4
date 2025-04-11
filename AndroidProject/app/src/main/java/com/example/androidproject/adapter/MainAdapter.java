@@ -55,5 +55,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder>{
             //이미지 상세보기로 가정.. 다이얼로그 띄운다..
             DialogUtil.showCustomDialog(context, R.drawable.ic_student_large);
         });
+
+        holder.binding.itemCallView.setOnClickListener(view -> {
+            
+        });
     }
 }

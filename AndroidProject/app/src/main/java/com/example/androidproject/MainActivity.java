@@ -19,9 +19,12 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.androidproject.adapter.MainAdapter;
+import com.example.androidproject.callback.DialogCallback;
 import com.example.androidproject.databinding.ActivityMainBinding;
 import com.example.androidproject.db.DBHelper;
 import com.example.androidproject.model.Student;
+import com.example.androidproject.util.DialogUtil;
+import com.example.androidproject.util.PermissionUtil;
 
 import java.util.ArrayList;
 
@@ -76,7 +79,14 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
-        makeRecyclerView();
+        PermissionUtil.checkAllPermission(this, isAllGranted -> {
+            if(isAllGranted){
+                makeRecyclerView();
+            }else {
+                showDialog();
+            }
+        });
+
 
     }
 
@@ -124,5 +134,20 @@ public class MainActivity extends AppCompatActivity {
         binding.recyclerView.addItemDecoration(new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL
         ));
+    }
+
+    private void showDialog(){
+        DialogUtil.showMessageDialog(this, getString(R.string.permission_denied),
+                "확인", null, new DialogCallback() {
+                    @Override
+                    public void onPositiveCallback() {
+
+                    }
+
+                    @Override
+                    public void onNegativeCallback() {
+
+                    }
+                });
     }
 }
