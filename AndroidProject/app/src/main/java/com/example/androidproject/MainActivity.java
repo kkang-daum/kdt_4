@@ -1,6 +1,8 @@
 package com.example.androidproject;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,14 +15,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.androidproject.adapter.MainAdapter;
 import com.example.androidproject.databinding.ActivityMainBinding;
+import com.example.androidproject.db.DBHelper;
+import com.example.androidproject.model.Student;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     //AddStudentActivity 실행시키고.. 되돌아 올때 callback 실행..
     ActivityResultLauncher<Intent> addLauncher;
+
+    //항목구성 데이터..
+    ArrayList<Student> datas = new ArrayList<>();//초기는 빈 상태..
+    MainAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +58,25 @@ public class MainActivity extends AppCompatActivity {
         addLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
+                    //intent 의 extra 데이터로 넘어온 결과 데이터 추출..
+                    Intent intent = result.getData();
+                    int id = intent.getIntExtra("id", 0);
+                    String name = intent.getStringExtra("name");
+                    String email = intent.getStringExtra("email");
+                    String phone = intent.getStringExtra("phone");
+                    String memo = intent.getStringExtra("memo");
+                    String photo = intent.getStringExtra("photo");
 
+                    Student student = new Student(id, name, email, phone, memo, photo);
+                    //새로운 Student 객체가 만들어졌다.. 이 데이터로 항목이 하나 추가되게 하면 된다..
+                    //adapter에 넘긴 항목 구성 데이터에 추가한 후에..
+                    //변경사항 반영해.. 명령내리면 된다..
+                    datas.add(student);
+                    adapter.notifyDataSetChanged();
                 }
         );
+
+        makeRecyclerView();
 
     }
 
@@ -65,5 +94,35 @@ public class MainActivity extends AppCompatActivity {
             addLauncher.launch(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    //db data select.....
+    private void getListData(){
+        DBHelper helper = new DBHelper(this);
+        SQLiteDatabase db = helper.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("select * from tb_student order by name", null);
+
+        while(cursor.moveToNext()){
+            Student student = new Student();
+            student.setId(cursor.getInt(0));
+            student.setName(cursor.getString(1));
+            student.setEmail(cursor.getString(2));
+            student.setPhone(cursor.getString(3));
+            student.setPhoto(cursor.getString(4));
+            student.setMemo(cursor.getString(5));
+
+            datas.add(student);
+        }
+    }
+
+    private void makeRecyclerView(){
+        getListData();
+        adapter = new MainAdapter(this, datas);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerView.setAdapter(adapter);
+        binding.recyclerView.addItemDecoration(new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL
+        ));
     }
 }
