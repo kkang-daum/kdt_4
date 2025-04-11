@@ -1,13 +1,19 @@
 package com.example.androidproject.adapter;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidproject.MainActivity;
+
 import com.example.androidproject.R;
 import com.example.androidproject.databinding.ItemMainBinding;
 import com.example.androidproject.model.Student;
@@ -57,7 +63,21 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder>{
         });
 
         holder.binding.itemCallView.setOnClickListener(view -> {
-            
+            if(ContextCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) ==
+                    PackageManager.PERMISSION_GRANTED){
+                callPhone(student.getPhone());
+            }else {
+                DialogUtil.showToast(context, context.getString(R.string.permission_denied));
+            }
         });
+    }
+
+    private void callPhone(String phoneNumber){
+        if(phoneNumber != null && !phoneNumber.equals("")){
+            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+phoneNumber));
+            context.startActivity(intent);
+        }else {
+            DialogUtil.showToast(context, context.getString(R.string.main_list_phone_error));
+        }
     }
 }
