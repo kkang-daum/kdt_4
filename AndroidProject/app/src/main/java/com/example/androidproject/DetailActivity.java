@@ -3,7 +3,10 @@ package com.example.androidproject;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
@@ -33,6 +36,8 @@ public class DetailActivity extends AppCompatActivity {
 
     ArrayList<Map<String, String>> scoreList;//시험점수.. 목록 데이터.. db select 해서 준비.. adapter에게 전달
     DetailAdapter adapter;
+
+    ActivityResultLauncher<Intent> requestGalleryLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +94,35 @@ public class DetailActivity extends AppCompatActivity {
             intent.putExtra("id", id);
             addScoreLauncher.launch(intent);
         });
+
+        //gallery 목록화면 띄우는 launcher.............................
+        requestGalleryLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    try{
+                        //gallery app 목록에서 사진 선택후 되돌아 온것이다..
+                        //유저가 선택한 사진을 식별할 수 있는 식별자 값을 Uri 객체로 넘겨준다..
+                        Uri uri = result.getData().getData();
+                        //uri 로 식별되는 사진의 경로를 획득한다.. db 에 저장했다가 나중에 이용할려고..
+                        String[] proj = new String[]{MediaStore.Images.Media.DATA};//사진 경로를 지칭하는 상수
+                        Cursor galleryCursor = getContentResolver().query(
+                                uri, proj, null, null, null);
+                        if(galleryCursor != null){
+                            if(galleryCursor.moveToFirst()){
+                                //사진 경로 얻고..
+                                String filePath = galleryCursor.getString(0);
+                                //나중을 위해서 tb_student 테이블에 데이터 저장.. column update...
+                                DBHelper helper = new DBHelper(this);
+                                SQLiteDatabase db = helper.getWritableDatabase();
+                                db.execSQL("update tb_student set photo=? where _id=?",
+                                        new String[]{});
+                            }
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+        );
     }
 
     private void setInitStudentData(int id){
