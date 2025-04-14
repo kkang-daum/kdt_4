@@ -3,6 +3,7 @@ package com.example.androidproject;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.example.androidproject.adapter.DetailAdapter;
 import com.example.androidproject.databinding.ActivityDetailBinding;
 import com.example.androidproject.db.DBHelper;
 import com.example.androidproject.model.Student;
+import com.example.androidproject.util.BitmapUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -115,8 +117,14 @@ public class DetailActivity extends AppCompatActivity {
                                 DBHelper helper = new DBHelper(this);
                                 SQLiteDatabase db = helper.getWritableDatabase();
                                 db.execSQL("update tb_student set photo=? where _id=?",
-                                        new String[]{});
+                                        new String[]{filePath, String.valueOf(id)});
+                                db.close();
                             }
+                        }
+                        //되돌아 오자마자.. 화면에 출력..
+                        Bitmap bitmap = BitmapUtil.getGalleryBitmapFromStream(this, uri);
+                        if(bitmap != null){
+                            binding.detailImage.setImageBitmap(bitmap);
                         }
                     }catch (Exception e){
                         e.printStackTrace();
@@ -151,6 +159,14 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         db.close();
+
+        binding.detailImage.setOnClickListener(view -> {
+            //intent 로 gallery 목록 화면 실행..
+            Intent intent = new Intent(Intent.ACTION_PICK,
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            intent.setType("image/*");
+            requestGalleryLauncher.launch(intent);
+        });
     }
 
     private void setInitScoreData(int id){
