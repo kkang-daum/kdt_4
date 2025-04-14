@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.androidproject.DetailActivity;
 import com.example.androidproject.MainActivity;
 
 import com.example.androidproject.R;
@@ -69,6 +70,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder>{
             }else {
                 DialogUtil.showToast(context, context.getString(R.string.permission_denied));
             }
+        });
+        holder.binding.itemNameView.setOnClickListener(view -> {
+            Intent intent = new Intent(context, DetailActivity.class);
+            //넘길 데이터는 있는가???? 있다.. 학생의 식별자 값...
+            intent.putExtra("id", student.getId());
+            //되돌아 왔을때 사후 처리가 있는가???? - 없다..
+            context.startActivity(intent);
         });
     }
 
