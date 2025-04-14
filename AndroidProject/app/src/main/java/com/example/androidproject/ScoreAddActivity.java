@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -72,6 +74,40 @@ public class ScoreAddActivity extends AppCompatActivity implements View.OnClickL
             intent.putExtra("date", date);
             setResult(RESULT_OK, intent);
             finish();
+        }else if(v == binding.keyBack){
+            //현재 유저가 입력한 score 획득..
+            String score = binding.keyEdit.getText().toString();
+            if(score.length() == 1){
+                binding.keyEdit.setText("0");
+            }else {
+                //index 0 부터.. length() -1까지 잘라서..
+                String newScore = score.substring(0, score.length() - 1);
+                binding.keyEdit.setText(newScore);
+            }
+        }else {
+            //나머지 숫자키....
+            //버튼의 문자열이 숫자이다..
+            //이벤트가 발생한 버튼의 문자열을 추출해서.. 입력하는 숫자로 사용..
+
+            //현재 이벤트가 발생한 버튼 객체..
+            Button btn = (Button) v;
+            String txt = btn.getText().toString();
+
+            String score = binding.keyEdit.getText().toString();
+            if(score.equals("0")){
+                //현재 화면에 0이 찍혀 있다면.. 유저가 클릭한 문자열을 그대로 출력..
+                binding.keyEdit.setText(txt);
+            }else {
+                String newScore = score + txt;
+                //숫자로 계산하려고.. int 타입으로 변형..
+                int intScore = Integer.parseInt(newScore);
+                if(intScore > 100){
+                    Toast.makeText(this, R.string.read_add_score_over, Toast.LENGTH_SHORT)
+                            .show();
+                }else {
+                    binding.keyEdit.setText(newScore);
+                }
+            }
         }
     }
 }
