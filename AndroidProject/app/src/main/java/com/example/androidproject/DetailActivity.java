@@ -1,10 +1,13 @@
 package com.example.androidproject;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -41,6 +44,21 @@ public class DetailActivity extends AppCompatActivity {
 
         //초기 데이터 화면에서 출력.. db select 해서...
         setInitStudentData(id);
+
+        //ScoreAddActivity 를 실행시키고자 한다.. 되돌아 왔을 때 사후처리가 필요한가?
+        ActivityResultLauncher<Intent> addScoreLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+
+                }
+        );
+
+        binding.detailAddScoreBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, ScoreAddActivity.class);
+            //넘길 데이터는 있는가?
+            intent.putExtra("id", id);
+            addScoreLauncher.launch(intent);
+        });
     }
 
     private void setInitStudentData(int id){
