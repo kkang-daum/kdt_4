@@ -58,6 +58,11 @@ public class DetailActivity extends AppCompatActivity {
         //actionbar -> toolbar
         setSupportActionBar(binding.toolbar);
 
+        //background 이미지로 지정한 stroke color 가 적용이 안되어서..
+        //button 이 기본으로 primary color 를 적용하고 있어서..
+        //못하게 막은 것이다.
+        binding.detailAddScoreBtn.setBackgroundTintList(null);
+
         //자신을 실행시키면서 전달한 데이터를 추출....
         int id = getIntent().getIntExtra("id", 0);
 
