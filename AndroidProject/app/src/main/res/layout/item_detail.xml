@@ -5,7 +5,15 @@
     android:orientation="horizontal">
 
     <TextView
+        android:id="@+id/detailItemScore"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+    <TextView
+        android:id="@+id/detailItemDate"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>
