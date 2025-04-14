@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 result -> {
                     //intent 의 extra 데이터로 넘어온 결과 데이터 추출..
                     Intent intent = result.getData();
-                    int id = intent.getIntExtra("id", 0);
+                    int id = (int)intent.getLongExtra("id", 0);
                     String name = intent.getStringExtra("name");
                     String email = intent.getStringExtra("email");
                     String phone = intent.getStringExtra("phone");
