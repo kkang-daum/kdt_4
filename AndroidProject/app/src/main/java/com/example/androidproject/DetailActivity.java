@@ -165,6 +165,11 @@ public class DetailActivity extends AppCompatActivity {
 
         db.close();
 
+        //db 에 저장된 photo filepath 로 화면 출력...
+        Bitmap bitmap = BitmapUtil.getGalleryBitmapFromFile(this, photoFilePath);
+        if(bitmap != null)
+            binding.detailImage.setImageBitmap(bitmap);
+
         binding.detailImage.setOnClickListener(view -> {
             //intent 로 gallery 목록 화면 실행..
             Intent intent = new Intent(Intent.ACTION_PICK,

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.example.androidproject.MainActivity;
 import com.example.androidproject.R;
 import com.example.androidproject.databinding.ItemMainBinding;
 import com.example.androidproject.model.Student;
+import com.example.androidproject.util.BitmapUtil;
 import com.example.androidproject.util.DialogUtil;
 
 import java.util.ArrayList;
@@ -78,6 +80,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder>{
             //되돌아 왔을때 사후 처리가 있는가???? - 없다..
             context.startActivity(intent);
         });
+
+        Bitmap bitmap = BitmapUtil.getGalleryBitmapFromFile(context, student.getPhoto());
+        if(bitmap != null)
+            holder.binding.itemImageView.setImageBitmap(bitmap);
     }
 
     private void callPhone(String phoneNumber){
