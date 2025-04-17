@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.androidproject.adapter.MainAdapter;
 import com.example.androidproject.callback.DialogCallback;
+import com.example.androidproject.callback.LauncherCallback;
 import com.example.androidproject.databinding.ActivityMainBinding;
 import com.example.androidproject.db.DBHelper;
 import com.example.androidproject.model.Student;
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     //항목구성 데이터..
     ArrayList<Student> datas = new ArrayList<>();//초기는 빈 상태..
     MainAdapter adapter;
+
+    ActivityResultLauncher<Intent> detailLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +91,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        detailLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                        //update...
+                    //adapter.notifyDataSetChanged()
+                }
+        );
+
     }
 
     @Override
@@ -128,7 +139,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void makeRecyclerView(){
         getListData();
-        adapter = new MainAdapter(this, datas);
+        adapter = new MainAdapter(this, datas, new LauncherCallback(){
+            @Override
+            public void launch() {
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class)
+                detailLauncher.launch(intent);
+            }
+        });
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(adapter);
         binding.recyclerView.addItemDecoration(new DividerItemDecoration(this,
