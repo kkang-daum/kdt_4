@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MainAdapter(this, datas, new LauncherCallback(){
             @Override
             public void launch() {
-                Intent intent = new Intent(MainActivity.this, DetailActivity.class)
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
                 detailLauncher.launch(intent);
             }
         });
