@@ -15,7 +15,7 @@ fun main() {
     //Int, Double 등 숫자타입으로 표현되는 클래스의 상위는 Number
     val data4: Number = data1//암시적 캐스팅..
     val data5: Int = data4 as Int //명시적 캐스팅...
-    
+
 
     //Int <-> String
     val data6: String = data1.toString()
