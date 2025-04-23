@@ -14,10 +14,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidproject.DetailActivity;
-import com.example.androidproject.MainActivity;
-
 import com.example.androidproject.R;
-import com.example.androidproject.callback.LauncherCallback;
 import com.example.androidproject.databinding.ItemMainBinding;
 import com.example.androidproject.model.Student;
 import com.example.androidproject.util.BitmapUtil;
@@ -37,12 +34,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder>{
     ArrayList<Student> datas;//항목 구성 데이터들.. activity 가 전달할 거다..
     Activity context;
 
-    LauncherCallback callback;
 
-    public MainAdapter(Activity context, ArrayList<Student> datas, LauncherCallback callback){
+    public MainAdapter(Activity context, ArrayList<Student> datas){
         this.datas = datas;
         this.context = context;
-        this.callback = callback;
     }
 
     @Override
@@ -78,12 +73,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder>{
             }
         });
         holder.binding.itemNameView.setOnClickListener(view -> {
-//            Intent intent = new Intent(context, DetailActivity.class);
+            Intent intent = new Intent(context, DetailActivity.class);
 //            //넘길 데이터는 있는가???? 있다.. 학생의 식별자 값...
-//            intent.putExtra("id", student.getId());
+            intent.putExtra("id", student.getId());
 //            //되돌아 왔을때 사후 처리가 있는가???? - 없다..
-//            context.startActivity(intent);
-            callback.launch();
+            context.startActivity(intent);
         });
 
         Bitmap bitmap = BitmapUtil.getGalleryBitmapFromFile(context, student.getPhoto());

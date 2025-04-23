@@ -186,6 +186,7 @@ public class DetailActivity extends AppCompatActivity {
         Cursor c = db.rawQuery("select score, date from tb_score where student_id = ? order by date",
                 new String[]{String.valueOf(id)});
         scoreList = new ArrayList<>();
+        int score = 0;
         while (c.moveToNext()){
             HashMap<String, String> map = new HashMap<>();
             map.put("score", c.getString(0));
@@ -193,7 +194,11 @@ public class DetailActivity extends AppCompatActivity {
             SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
             map.put("date", sd.format(d));
             scoreList.add(map);
+            score = c.getInt(0);
         }
+        binding.detailScore.setScore(score);
+
+
         db.close();
 
         binding.detailRecyclerView.setLayoutManager(new LinearLayoutManager(this));
