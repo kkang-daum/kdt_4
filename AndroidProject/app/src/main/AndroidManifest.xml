@@ -7,12 +7,12 @@
         android:required="false" />
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
-
-<!--    외장 메모리의 파일(유저의 파일)을 앱에서 access 하면 퍼미션이 요구된다..
-read/write 따로... -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-<!--    api level 33 부터는 타입별로.. 퍼미션을 따로 지정해야...-->
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <!--
+    외장 메모리의 파일(유저의 파일)을 앱에서 access 하면 퍼미션이 요구된다..
+read/write 따로...
+    -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- api level 33 부터는 타입별로.. 퍼미션을 따로 지정해야... -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
         android:allowBackup="true"
@@ -24,6 +24,9 @@ read/write 따로... -->
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidProject"
         tools:targetApi="31">
+        <activity
+            android:name=".ChartActivity"
+            android:exported="false" />
         <activity
             android:name=".ScoreAddActivity"
             android:exported="false" />

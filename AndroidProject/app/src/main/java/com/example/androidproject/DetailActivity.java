@@ -8,10 +8,13 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -100,6 +103,13 @@ public class DetailActivity extends AppCompatActivity {
             //넘길 데이터는 있는가?
             intent.putExtra("id", id);
             addScoreLauncher.launch(intent);
+        });
+
+        binding.chartBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, ChartActivity.class);
+            //넘길 데이터는 있는가?
+            intent.putExtra("id", id);
+            startActivity(intent);
         });
 
         //gallery 목록화면 띄우는 launcher.............................
@@ -206,5 +216,23 @@ public class DetailActivity extends AppCompatActivity {
         binding.detailRecyclerView.setAdapter(adapter);
         binding.detailRecyclerView.addItemDecoration(new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_detail, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.menu_detail_sms){
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("smsto:"+student.getPhone()));
+            intent.putExtra("sms_body", scoreList.get(0).get("score"));
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
