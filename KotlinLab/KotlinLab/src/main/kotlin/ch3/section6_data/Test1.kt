@@ -65,6 +65,58 @@ fun main() {
     println(user5.toString())//UserData(no=1, name=kim)
 
 
+    //destructing assignment(구조분해할당)........................
+    val no1 = user3.component1()
+    val name1 = user3.component2()
+//    user3.component3()//error.. 주 생성자의 매개변수 갯수만큼 만들어 진다..
+    println("$no1, $name1")//1, kim
 
+    //한꺼번에 여러 데이터 추출..
+    val (no2, name2) = user3
+    println("$no2, $name2")//1, kim
+    //순서로 하는 것이다. 변수명과 관련 없다..
+    val (a, b) = user3
+    println("$a, $b")//1, kim
+    //멤버 변수가 좀 많다.. 모두 뽑고 싶은것이 아니라.. 2번째, 4번째만 뽑고 싶다..
+    val (_, c) = user3
+    println("$c")//kim
+
+
+    //data 클래스가 아닌 list 도 가능하기는 하다........
+    val list = listOf(1, 2, 3, 4, 5)
+    val (d1, d2) = list
+    println("$d1, $d2")//1, 2
+
+    val (e1, e2) = list.drop(1)
+    println("$e1, $e2")//2, 3
+
+    val (_, f1, _, f2) = list
+    println("$f1, $f2")//2, 4
+
+    val g1 = list.component5()
+    println("$g1")//5
+
+
+    //어떤 함수에서 데이터를 여러개를 리턴시키고자 한다면? 마치 아래처럼...
+    //이를 흔히 tuple 기법이라고 하는데.. 코틀린은 지원하지 않는다.
+//    fun someFun(): (Int, Int, Int, Int) {
+//        return (10, 20, 30, 40)
+//    }
+//    val (f1, f2, f3, f4) = someFun()
+
+    //data 클래스를 이용해서 비슷하게 흉내낼 수 있다..
+    data class Datas(var data1: Int, var data2: Int, var data3: Int)
+    fun getDatas(): Datas {
+        return Datas(10, 20, 30)
+    }
+    val (k1, k2, k3) = getDatas()
+    println("$k1, $k2, $k3")//10, 20, 30
+
+    //아래처럼 해도 된다..
+    fun getDatas2(): Array<Int>{
+        return arrayOf(10, 20, 30)
+    }
+    val (j1, j2, j3) = getDatas2()
+    println("$j1, $j2, $j3")//10, 20, 30
 
 }
