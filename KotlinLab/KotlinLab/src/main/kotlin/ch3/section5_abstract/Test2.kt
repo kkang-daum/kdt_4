@@ -68,6 +68,6 @@ interface MyInterface3 {
     var data3: String
         get() = "kim"
         set(value){
-            
+
         }
 }
