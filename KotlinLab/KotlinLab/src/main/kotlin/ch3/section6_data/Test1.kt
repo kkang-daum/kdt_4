@@ -56,4 +56,15 @@ fun main() {
     //자바에서는 == 밖에 없다..
     //코틀린에서 == => equals(), === => ==
     println("${user1 == user2}, ${user1 === user2}, ${user3 == user4}, ${user3 === user4}")
+
+
+    //toString().....................................................
+    //Any 에 선언된 toString 이 이용..
+    println(user1.toString())//org.example.ch3.section6_data.User@66d2e7d9
+    println(user3.toString())//UserData(no=1, name=kim)
+    println(user5.toString())//UserData(no=1, name=kim)
+
+
+
+
 }
