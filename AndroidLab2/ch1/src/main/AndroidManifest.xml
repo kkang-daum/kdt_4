@@ -9,6 +9,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLab2">
         <activity
+            android:name=".section2_viewpager.Test2_1Activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".section1_fragment.Test1_2Activity"
             android:exported="true">
             <intent-filter>
