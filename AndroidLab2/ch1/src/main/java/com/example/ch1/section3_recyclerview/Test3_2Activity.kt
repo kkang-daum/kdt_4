@@ -54,5 +54,15 @@ class MyAdapter2(val data: MutableList<String>): RecyclerView.Adapter<MyViewHold
     override fun onBindViewHolder(holder: MyViewHolder2, position: Int) {
         val binding = holder.binding
         binding.itemData.text = data[position]
+
+        //test1......notifyXXXX() 함수 이용해서.. 변경 사항 적용.....
+        binding.updateBtn.setOnClickListener {
+            //데이터 변경..
+            var newData = data[position].toInt()
+            newData++
+            data[position] = newData.toString()
+            //변경사항 반영... 특정 항목의 위치를 지정해서.. 그 위치의 항목만 다시 구성되게..
+            notifyItemChanged(position)
+        }
     }
 }
