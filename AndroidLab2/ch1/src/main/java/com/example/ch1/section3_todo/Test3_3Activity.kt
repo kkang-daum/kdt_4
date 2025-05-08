@@ -18,4 +18,12 @@ class Test3_3Activity : AppCompatActivity() {
             insets
         }
     }
+
+    fun goAddFragment(){
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction()
+        transaction.replace(R.id.main, AddFragment())
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
 }
