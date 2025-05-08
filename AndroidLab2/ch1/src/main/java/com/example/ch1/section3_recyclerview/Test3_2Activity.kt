@@ -64,5 +64,17 @@ class MyAdapter2(val data: MutableList<String>): RecyclerView.Adapter<MyViewHold
             //변경사항 반영... 특정 항목의 위치를 지정해서.. 그 위치의 항목만 다시 구성되게..
             notifyItemChanged(position)
         }
+
+        binding.deleteBtn.setOnClickListener {
+            //데이터 삭제..
+            data.removeAt(position)
+            //삭제 알림...
+            notifyItemRemoved(position)
+            //위 코드로 해당 항목이 삭제가 되지만.. 그 아래에 있는 항목의 index 값이 변경 되었음을 알려주지 않으면
+            //아래 항목 update, delete 시에 다른 항목이 update, delete 될 수 있거나..
+            //out of bound exception 가능성이 있다..
+            //아래 항목의 index 위치가 변경되었음을 다음의 코드로 알려줘야 한다..
+            notifyItemRangeChanged(position, data.size-position)
+        }
     }
 }
