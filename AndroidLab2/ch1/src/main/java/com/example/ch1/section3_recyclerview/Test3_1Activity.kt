@@ -3,6 +3,7 @@ package com.example.ch1.section3_recyclerview
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -62,13 +63,15 @@ class Test3_1Activity : AppCompatActivity() {
 //            GridLayoutManager.HORIZONTAL, false)
 
         //staggered.....................
-        data.add("aaaaaaaaaa aaaaaaaaaaaaa, aaaa, aaaaaaaaaaaaaa, aaaaaaaaaaaa, aaaaaaaaaaaaaa, aaaaaaaaaaaa, aaaaaaaaaaaaaaaaa, aaaaaaaaaaaaaaaaa")
-        data.add("bbbbbbbbbb bbbbbbbbbbb")
-        data.add("ccccccccc")
-        data.add("dddddddddddddd ddddddddddddddd dddddddddddddddd ddddddddddddddddd ddddddddddddddddd ddddddddddddddd ddddddddddddddddd ddddddddddddddddddd")
-        val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+//        data.add("aaaaaaaaaa aaaaaaaaaaaaa, aaaa, aaaaaaaaaaaaaa, aaaaaaaaaaaa, aaaaaaaaaaaaaa, aaaaaaaaaaaa, aaaaaaaaaaaaaaaaa, aaaaaaaaaaaaaaaaa")
+//        data.add("bbbbbbbbbb bbbbbbbbbbb")
+//        data.add("ccccccccc")
+//        data.add("dddddddddddddd ddddddddddddddd dddddddddddddddd ddddddddddddddddd ddddddddddddddddd ddddddddddddddd ddddddddddddddddd ddddddddddddddddddd")
+//        val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
+        val layoutManager = LinearLayoutManager(this)
         binding.main.layoutManager = layoutManager
+        binding.main.addItemDecoration(MyDecoration(this))
 
 
 
@@ -134,7 +137,16 @@ class MyDecoration(val context: Context): RecyclerView.ItemDecoration(){
         state: RecyclerView.State
     ) {
         super.getItemOffsets(outRect, view, parent, state)
-        //매개변수로 몇번째 항목을 꾸미기 위해서 호출된 것인지, 
+        //매개변수로 몇번째 항목을 꾸미기 위해서 호출된 것인지, 전달되지 않는다.. 필요하다면 획득 가능..
+        //1 을 더하는 것은 알고리즘의 편의성 때문..
+        val index = parent.getChildAdapterPosition(view) + 1
+        if(index % 3 == 0)
+            outRect.set(10, 10, 10, 60)
+        else
+            outRect.set(10, 10, 10, 0)
+
+        view.setBackgroundColor(Color.LTGRAY)
+        ViewCompat.setElevation(view, 20.0f)
     }
 }
 
