@@ -26,7 +26,7 @@ fun selectTodos(context: Context): MutableList<Todo> {
         }
     }
     db.close()
-    return results    
+    return results
 }
 
 fun updateTodo(context: Context, values: ContentValues, where: String){
