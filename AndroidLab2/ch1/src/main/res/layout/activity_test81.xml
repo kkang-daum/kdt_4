@@ -21,6 +21,7 @@
 
 <!--
 contentScrim : 앱바가 접히다가 .. 앱바 영역의 내용이 정상적으로 출력되기 힘들정도로 접혔을때 칠할 색상..
+layout_scrollFlags : 접히는 정책.. scroll|exitUntilCollapsed 스크롤 된다.. 한줄은 남긴다..
 -->
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
@@ -28,24 +29,68 @@ contentScrim : 앱바가 접히다가 .. 앱바 영역의 내용이 정상적으
                 app:contentScrim="?attr/colorPrimary"
                 app:expandedTitleMarginBottom="50dp"
                 app:expandedTitleMarginStart="48dp"
-                app:title="Appbar Title">
+                app:title="Appbar Title"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+<!--
+layout_collapseMode : appbar 가 접힐때 개별 뷰는 어떻게 움직일 것인가?
+parallax - 같이 접힌다..
+pin : 고정..
+-->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/appbarImageView"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/baseball"
+                    app:layout_collapseMode="parallax"/>
 
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:minHeight="?attr/actionBarSize"
+                    android:paddingTop="8dp"
+                    android:id="@+id/toolbar"
+                    android:background="#00000000"
+                    android:elevation="4dp"
+                    app:titleTextColor="#FFFFFF"
+                    app:layout_collapseMode="pin"/>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/tabs"
+                    android:layout_gravity="bottom"
+                    android:background="#00000000"
+                    app:layout_collapseMode="parallax"
+                    app:tabMode="scrollable"
+                    app:tabTextColor="#FFFFFF"/>
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
 
-<!--        메인 데이터 출력되는 위치..-->
+<!--        메인 데이터 출력되는 위치..
+layout_behavior :
+CoordinatorLayout 을 사용했다고 하더라도..
+그리고 그 하위의 뷰(AppBarLayout, RecyclerView) 가 Coordinator 와 상호 연동이 준비된 뷰라고 하더라도..
+layout_behavior 없으면 상호 연동이 안된다.. 최소한으로 coordinator 에게 알려줘야 한다..
+누구에게 스크롤 정보를 전달해라...
+
+문자열로 값을 지정했지만.. 단순 문자열 아니다.. 클래스명이다.. AppBarLayout 내에 선언된 inner 클래스명이다..
+
+-->
         <androidx.viewpager2.widget.ViewPager2
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/viewpager"/>
+            android:id="@+id/viewpager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.navigation.NavigationView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/navigationView"
+        android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"
         app:menu="@menu/menu_navigation"/>
 
