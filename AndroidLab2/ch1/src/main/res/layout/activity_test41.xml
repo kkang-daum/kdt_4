@@ -30,7 +30,7 @@
 layout_gravity : 끌려 나오는 방향 지정, left, right, start(언어의 방향)-->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/main_drawer_view"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"

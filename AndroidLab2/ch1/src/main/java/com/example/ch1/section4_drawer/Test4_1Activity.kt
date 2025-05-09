@@ -35,6 +35,10 @@ class Test4_1Activity : AppCompatActivity() {
         toggle = ActionBarDrawerToggle(this, binding.main, R.string.drawer_open,
             R.string.drawer_close)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        //네비게이션 아이콘을 업버튼으로 변경하기 위해서 추가..
+        binding.main.addDrawerListener(toggle)
+
         toggle.syncState()
 
         //NavigationView 의 menu 로 준비한 항목 클릭 이벤트....
@@ -42,6 +46,11 @@ class Test4_1Activity : AppCompatActivity() {
             Log.d("kkang", "navigation item click.... ${it.title}")
             true
         }
+    }
+
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+
     }
 
     //메뉴 이벤트 처리 함수...
