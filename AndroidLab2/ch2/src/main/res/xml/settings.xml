@@ -39,7 +39,7 @@
     <EditTextPreference
         android:key="id"
         android:title="ID 설정"/>
-    
+
     <ListPreference
         android:key="color"
         android:title="색상선택"
