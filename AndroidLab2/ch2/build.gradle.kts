@@ -46,4 +46,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //group id: lib id: version
+    //원한다면 group id, lib id, version 을 libs.versions.toml 에 등록하고..
+    //실제 build.gradle.kts 에서는 링크만 걸어서 이용..
+    implementation("androidx.datastore:datastore-preferences:1.1.4")
 }
