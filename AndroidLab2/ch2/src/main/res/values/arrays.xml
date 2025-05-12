@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    목록, 항목 선택 설정에서 목록 나열 문자열..-->
+    <string-array name="my_color">
+        <item>빨강</item>
+        <item>파랑</item>
+        <item>초록</item>
+    </string-array>
+<!--    목록, 항목 선택 설정에서 항목이 선택될때. 저장할 값..
+원한다면.. 화면 출력 목록 문자열을 그대로 저장시킬 수도 있고, 따로 준비할 수도 있고..-->
+    <string-array name="my_color_values">
+        <item>red</item>
+        <item>blue</item>
+        <item>green</item>
+    </string-array>
+</resources>

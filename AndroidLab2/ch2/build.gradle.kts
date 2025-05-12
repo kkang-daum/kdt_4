@@ -51,4 +51,7 @@ dependencies {
     //원한다면 group id, lib id, version 을 libs.versions.toml 에 등록하고..
     //실제 build.gradle.kts 에서는 링크만 걸어서 이용..
     implementation("androidx.datastore:datastore-preferences:1.1.4")
+    //설정 자동화..
+    //xxx-ktx 는 코틀린으로 만든 라이브러리..
+    implementation("androidx.preference:preference-ktx:1.2.1")
 }

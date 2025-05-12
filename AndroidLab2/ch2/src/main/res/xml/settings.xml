@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    한 화면에 같이 나오는 설정을 category 로 구분되어 나오게 하고 싶을때..-->
+    <PreferenceCategory
+        android:key="a_category"
+        android:title="A Setting">
+        <SwitchPreference
+            android:key="main1"
+            android:title="Main - 1 Setting"/>
+        <SwitchPreference
+            android:key="main2"
+            android:title="Main - 2 Setting"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="b_category"
+        android:title="B Setting">
+        <SwitchPreference
+            android:key="main3"
+            android:title="Main - 3 Setting"/>
+        <SwitchPreference
+            android:key="main4"
+            android:title="Main - 4 Setting"/>
+    </PreferenceCategory>
+
+<!--    항목을 선택했을때, 화면이 전환되게...
+    다른 설정 화면이 나와야 한다면.. - 다른 설정 xml 을 등록한 Fragment 지정..
+    다른 activity 가 실행되어야 한다면.. activity 를 실행하기 위한 intent 정보를 지정..(명시적, 암시적)
+-->
+    <Preference
+        android:key="a"
+        android:title="Go A Setting"
+        android:fragment="com.example.ch2.section2.ASettingFragment"/>
+    <Preference
+        android:key="b"
+        android:title="Go B Setting"
+        android:fragment="com.example.ch2.section2.BSettingFragment"/>
+
+    <EditTextPreference
+        android:key="id"
+        android:title="ID 설정"/>
+    
+    <ListPreference
+        android:key="color"
+        android:title="색상선택"
+        android:entries="@array/my_color"
+        android:entryValues="@array/my_color_values"/>
+
+</androidx.preference.PreferenceScreen>
