@@ -12,11 +12,15 @@ import com.example.ch3.R
 import com.example.ch3.databinding.ActivityTest11Binding
 
 class Test1_1Activity : AppCompatActivity() {
+
+    var count = 0
+    lateinit var binding: ActivityTest11Binding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val binding = ActivityTest11Binding.inflate(layoutInflater)
+        binding = ActivityTest11Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -28,6 +32,11 @@ class Test1_1Activity : AppCompatActivity() {
         binding.goBtn.setOnClickListener {
             val intent = Intent(this, SomeActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.incrementBtn.setOnClickListener {
+            count++
+            binding.resultView.text = "$count"
         }
 
         Log.d("kkang", "onCreate....")
@@ -57,6 +66,19 @@ class Test1_1Activity : AppCompatActivity() {
         super.onDestroy()
         Log.d("kkang", "onDestory....")
     }
+
+    //onDestory 직전에 호출.. 액티비티 상태 데이터 저장..
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("count", count)
+    }
+
+    //activity 의 상태 데이터가 있는 경우만 호출..
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        count = savedInstanceState.getInt("count")
+        binding.resultView.text = "$count"
+    }
 }
 //최초 실행.....
 //onCreate....
@@ -68,5 +90,13 @@ class Test1_1Activity : AppCompatActivity() {
 //onStop....
 
 //back 으로 되돌아 오면...
+//onStart....
+//onResume....
+
+//화면 회전...
+//onPause....
+//onStop....
+//onDestory....
+//onCreate....
 //onStart....
 //onResume....
