@@ -2,6 +2,7 @@ package com.example.ch2.section4
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
 import androidx.activity.enableEdgeToEdge
@@ -11,8 +12,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.ch2.R
 import com.example.ch2.databinding.ActivityTest41Binding
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class Test4_1Activity : AppCompatActivity() {
+
+    lateinit var filePath: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -34,10 +40,28 @@ class Test4_1Activity : AppCompatActivity() {
             binding.resultView.setImageBitmap(bitmap)
         }
 
-        binding.thumbnailBtn.setOnClickListener { 
+        binding.thumbnailBtn.setOnClickListener {
             //camera app 실행.. thumbnail 방법으로..
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             thumbnailLauncher.launch(intent)
+        }
+
+        val fileLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ){
+            //원본 파일이 읽힌다.. 파일 사이즈를 코드적으로 줄여서..
+            val option = BitmapFactory.Options()
+            option.inSampleSize = 10
+            val bitmap = BitmapFactory.decodeFile(filePath, option)
+            bitmap?.let {
+                binding.resultView.setImageBitmap(bitmap)
+            }
+        }
+
+        binding.fileBtn.setOnClickListener {
+            //file 준비...
+            val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+            val dir = getExternalFilesDir()
         }
     }
 }
