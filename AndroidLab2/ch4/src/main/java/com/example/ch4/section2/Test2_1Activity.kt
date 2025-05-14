@@ -2,6 +2,8 @@ package com.example.ch4.section2
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -80,6 +82,22 @@ class Test2_1Activity : AppCompatActivity() {
         builder.setWhen(System.currentTimeMillis())
         builder.setContentTitle("메시지 도착")
         builder.setContentText("안녕하세요")
+
+        //확장 터치 이벤트.............................
+        val intent = Intent(this, DetailActivity::class.java)
+        val pIntent = PendingIntent.getActivity(this, 10, intent,
+            PendingIntent.FLAG_IMMUTABLE)
+        builder.setContentIntent(pIntent)
+
+        //action 추가... 최대 3개...
+        val actionIntent = Intent(this, MyNotificaitonReceiver::class.java)
+        val actionPendingIntent = PendingIntent.getBroadcast(this, 20, actionIntent,
+            PendingIntent.FLAG_IMMUTABLE)
+        builder.addAction(NotificationCompat.Action.Builder(
+            android.R.drawable.stat_notify_chat,
+            "Action",
+            actionPendingIntent
+        ).build())
 
         //발생............
         manager.notify(11, builder.build())

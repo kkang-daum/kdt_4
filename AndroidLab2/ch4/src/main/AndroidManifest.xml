@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--    api level 33 부터는 아래의 퍼미션이 선언되어야 noti 가 정상적으로 뜬다.. -->
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <!-- api level 33 부터는 아래의 퍼미션이 선언되어야 noti 가 정상적으로 뜬다.. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLab2">
+        <receiver
+            android:name=".section2.MyNotificaitonReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
+        <activity
+            android:name=".section2.DetailActivity"
+            android:exported="false" />
         <activity
             android:name=".section2.Test2_1Activity"
             android:exported="true">
