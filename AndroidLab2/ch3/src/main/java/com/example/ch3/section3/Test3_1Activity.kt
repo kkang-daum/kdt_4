@@ -12,6 +12,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.ch3.R
 import com.example.ch3.databinding.ActivityTest31Binding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.channels.consumeEach
+import kotlinx.coroutines.launch
 
 class Test3_1Activity : AppCompatActivity() {
 
@@ -96,25 +103,51 @@ class Test3_1Activity : AppCompatActivity() {
             // 그라운드 작업에 전달될 데이터 타입
             // 스레드에 의해 반복적으로 발생되는 데이터 타입
             // 스레드의 최종 결과 데이터 타입..
-            class MyAsyncTask: AsyncTask<Void, Long, Long>(){
-                //시간이 오래 걸리는 업무를 담는 함수.. 내부적으로 스레드에 의해 실행된다..
-                override fun doInBackground(vararg params: Void?): Long {
-                    var sum = 0L
-                    for(i in 1..1_000_000_000){
-                        sum += i
-                    }
-                    return sum//이곳에서 리턴 시킨 값이 이 스레드의 최종 결과 값이다..
-                    //이 값이 onPostExecute() 의 매개변수에 전달된다..
-                }
+//            class MyAsyncTask: AsyncTask<Void, Long, Long>(){
+//                //시간이 오래 걸리는 업무를 담는 함수.. 내부적으로 스레드에 의해 실행된다..
+//                override fun doInBackground(vararg params: Void?): Long {
+//                    var sum = 0L
+//                    for(i in 1..1_000_000_000){
+//                        sum += i
+//                    }
+//                    return sum//이곳에서 리턴 시킨 값이 이 스레드의 최종 결과 값이다..
+//                    //이 값이 onPostExecute() 의 매개변수에 전달된다..
+//                }
+//
+//                override fun onPostExecute(result: Long?) {
+//                    //main thread 에 의해 실행..
+//                    //UI
+//                    Toast.makeText(this@Test3_1Activity, "$result", Toast.LENGTH_SHORT)
+//                        .show()
+//                }
+//            }
+//            MyAsyncTask().execute()
 
-                override fun onPostExecute(result: Long?) {
-                    //main thread 에 의해 실행..
-                    //UI
-                    Toast.makeText(this@Test3_1Activity, "$result", Toast.LENGTH_SHORT)
-                        .show()
+            //방법3 - 코루틴으로 처리.........................
+            //Main Thread 에 의해 실행될 코루틴과 백그라운드 업무를 담당하기 위한 코루틴이 같이 동작
+            //두 코루틴간 데이터 전달을 위해서..
+            val channel = Channel<Int>()
+
+            //백그라운드 업무를 담당하는 코루틴이 실행될 스코프..
+            //코루틴은 항상 스코프 내에서 실행..
+            //Dispatchers.Default - 극한의 CPU 작업이 필요한 코루틴을 돌리는 스레드..
+            val scope = CoroutineScope(Dispatchers.Default + Job())
+            scope.launch {
+                //코루틴 구동..
+                var sum = 0L
+                for (i in 1..1_000_000_000){
+                    sum += i
+                }
+                //다른 코루틴에게 데이터 전달.. channel 을 이용해서..
+                channel.send(sum.toInt())
+            }
+
+            GlobalScope.launch(Dispatchers.Main){
+                //Main Thread 에 의해 실행되는 코루틴 구동..
+                channel.consumeEach {
+                    //channel 에 데이터가 발행된다면...
                 }
             }
-            MyAsyncTask().execute()
         }
     }
 }
