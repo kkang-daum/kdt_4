@@ -12,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLab2">
         <receiver
-            android:name=".section2.MyNotificaitonReceiver"
+            android:name=".section2.MyRemoteinputReceiver"
             android:enabled="true"
             android:exported="true"></receiver>
+        <receiver
+            android:name=".section2.MyNotificaitonReceiver"
+            android:enabled="true"
+            android:exported="true" />
 
         <activity
             android:name=".section2.DetailActivity"
