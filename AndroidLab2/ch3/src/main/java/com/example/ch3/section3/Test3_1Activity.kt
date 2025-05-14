@@ -146,6 +146,8 @@ class Test3_1Activity : AppCompatActivity() {
                 //Main Thread 에 의해 실행되는 코루틴 구동..
                 channel.consumeEach {
                     //channel 에 데이터가 발행된다면...
+                    Toast.makeText(this@Test3_1Activity, "$it", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
         }
