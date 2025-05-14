@@ -107,7 +107,14 @@ class Test2_1Activity : AppCompatActivity() {
         }
         //준비된 RemoteInput을 Action 으로 추가..
         val remoteIntent = Intent(this, MyRemoteinputReceiver::class.java)
-        
+        val remotePendingIntent = PendingIntent.getBroadcast(this, 30,
+            remoteIntent, PendingIntent.FLAG_MUTABLE)
+        builder.addAction(NotificationCompat.Action.Builder(
+            R.drawable.send,
+            "답장",
+            remotePendingIntent
+        ).addRemoteInput(remoteInput).build())
+
 
 
 
