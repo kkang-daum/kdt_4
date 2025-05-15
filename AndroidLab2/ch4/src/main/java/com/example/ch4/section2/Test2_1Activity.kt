@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
@@ -114,6 +115,12 @@ class Test2_1Activity : AppCompatActivity() {
             "답장",
             remotePendingIntent
         ).addRemoteInput(remoteInput).build())
+
+        //big picture style..................................
+        val bigPicture = BitmapFactory.decodeResource(resources, R.drawable.big)
+        val bigStyle = NotificationCompat.BigPictureStyle()
+        bigStyle.bigPicture(bigPicture)
+        builder.setStyle(bigStyle)
 
 
 
