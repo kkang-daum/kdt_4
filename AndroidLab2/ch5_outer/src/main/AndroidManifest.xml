@@ -11,7 +11,11 @@
         <service
             android:name=".MyMessengerService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.ch5_outer.ACTION_SERVICE_Messenger"/>
+            </intent-filter>
+        </service>
 
         <activity
             android:name=".MainActivity"

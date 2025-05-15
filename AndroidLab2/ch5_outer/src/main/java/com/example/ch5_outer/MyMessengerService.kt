@@ -60,11 +60,17 @@ class MyMessengerService : Service() {
                         }
                     }
                 }
+                20 -> {
+                    //stop 요청...
+                    if(player.isPlaying)
+                        player.stop()
+                }
             }
         }
     }
 
     override fun onBind(intent: Intent): IBinder {
-        TODO("Return the communication channel to the service.")
+        messager = Messenger(IncomingHandler(this))
+        return messager.binder
     }
 }
