@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<!--    jobScheduler에 network type 으로 조건을 지정하려면.. 아래의 퍼미션 등록되어야..-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -11,13 +13,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLab2">
-<!--        foreground serivce 로 동작하는 서비스...
-즉 서비스 내에서 startForgrond() 함수를 호출하는 서비스.. 는 foregroundServiceType 선언해야-->
+        <service
+            android:name=".section2.MyJobService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"></service>
+        <!--
+foreground serivce 로 동작하는 서비스...
+즉 서비스 내에서 startForgrond() 함수를 호출하는 서비스.. 는 foregroundServiceType 선언해야
+        -->
         <service
             android:name=".section2.MyService2"
             android:enabled="true"
             android:exported="true"
-            android:foregroundServiceType="shortService"></service>
+            android:foregroundServiceType="shortService" />
 
         <activity
             android:name=".section2.Test2_1Activity"
