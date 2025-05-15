@@ -117,10 +117,15 @@ class Test2_1Activity : AppCompatActivity() {
         ).addRemoteInput(remoteInput).build())
 
         //big picture style..................................
-        val bigPicture = BitmapFactory.decodeResource(resources, R.drawable.big)
-        val bigStyle = NotificationCompat.BigPictureStyle()
-        bigStyle.bigPicture(bigPicture)
-        builder.setStyle(bigStyle)
+//        val bigPicture = BitmapFactory.decodeResource(resources, R.drawable.big)
+//        val bigStyle = NotificationCompat.BigPictureStyle()
+//        bigStyle.bigPicture(bigPicture)
+//        builder.setStyle(bigStyle)
+
+        //big text style
+//        val bigTextStyle = NotificationCompat.BigTextStyle()
+//        bigTextStyle.bigText(resources.getString(R.string.big_txt))
+//        builder.setStyle(bigTextStyle)
 
 
 

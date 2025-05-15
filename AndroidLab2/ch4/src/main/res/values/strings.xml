@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Ch4</string>
+    <string name="big_txt">
+        hello world hello worldhello worldhello worldhello worldhello worldhello world
+        ello world hello worldhello worldhello worldhello worldhello worldhello world
+        ello world hello worldhello worldhello worldhello worldhello worldhello world
+        ello world hello worldhello worldhello worldhello worldhello worldhello world
+        ello world hello worldhello worldhello worldhello worldhello worldhello world
+        ello world hello worldhello worldhello worldhello worldhello worldhello worldello world hello worldhello worldhello worldhello worldhello worldhello world
+        ello world hello worldhello worldhello worldhello worldhello worldhello world
+
+
+    </string>
 </resources>
