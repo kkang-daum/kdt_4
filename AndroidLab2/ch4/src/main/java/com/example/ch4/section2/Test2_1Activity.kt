@@ -13,9 +13,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
+import androidx.core.app.Person
 import androidx.core.app.RemoteInput
 import androidx.core.content.ContextCompat
 import androidx.core.content.PackageManagerCompat
+import androidx.core.graphics.drawable.IconCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.ch4.R
@@ -126,6 +128,35 @@ class Test2_1Activity : AppCompatActivity() {
 //        val bigTextStyle = NotificationCompat.BigTextStyle()
 //        bigTextStyle.bigText(resources.getString(R.string.big_txt))
 //        builder.setStyle(bigTextStyle)
+
+        //message style............
+        //메시지를 보낸 사람을 Person 으로 준비..
+        val person1: Person = Person.Builder()
+            .setName("홍길동")
+            .setIcon(IconCompat.createWithResource(this, R.drawable.person1))
+            .build()
+
+        val person2: Person = Person.Builder()
+            .setName("김길동")
+            .setIcon(IconCompat.createWithResource(this, R.drawable.person2))
+            .build()
+
+        //사람한테 받은 메시지...
+        val message1 = NotificationCompat.MessagingStyle.Message(
+            "hello",
+            System.currentTimeMillis(),
+            person1
+        )
+        val message2 = NotificationCompat.MessagingStyle.Message(
+            "world",
+            System.currentTimeMillis(),
+            person2
+        )
+
+        val messageStyle = NotificationCompat.MessagingStyle(person1)
+            .addMessage(message1)
+            .addMessage(message2)
+        builder.setStyle(messageStyle)
 
 
 
