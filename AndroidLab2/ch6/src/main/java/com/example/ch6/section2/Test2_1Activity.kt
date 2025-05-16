@@ -1,5 +1,6 @@
 package com.example.ch6.section2
 
+import android.content.Intent
 import android.database.Cursor
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -47,6 +48,12 @@ class Test2_1Activity : AppCompatActivity() {
                         "name : ${cursor?.getString(0)}, phone : ${cursor.getString(1)}"
                 }
             }
+        }
+
+        binding.getBtn.setOnClickListener {
+            //주소록의 목록화면 출력..
+            val intent = Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI)
+            launcher.launch(intent)
         }
     }
 }
