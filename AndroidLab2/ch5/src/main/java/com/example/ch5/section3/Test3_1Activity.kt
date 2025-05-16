@@ -51,6 +51,7 @@ class Test3_1Activity : AppCompatActivity() {
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
             when(msg.what){
+                //7..........................
                 10 -> {
                     val bundle = msg.obj as Bundle
                     bundle.getInt("duration")?.let {
@@ -81,12 +82,16 @@ class Test3_1Activity : AppCompatActivity() {
 
     val connection: ServiceConnection = object: ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+            //3..........................
             //service 와 연결된 순간.. 서비스에서 전달한 객체 획득..
             messenger = Messenger(service)
+
             val msg = Message()
             msg.what = 10
             msg.replyTo = replyMessenger
+            //4...............................
             messenger.send(msg)
+
             connectionMode = "messenger"
         }
 
@@ -110,6 +115,7 @@ class Test3_1Activity : AppCompatActivity() {
 
         replyMessenger = Messenger(HandleReplyMsg())
         binding.playBtn.setOnClickListener{
+            //1..................
             //intent 로 서비스 실행..
             val intent = Intent("com.example.ch5_outer.ACTION_SERVICE_Messenger")
             //bindService 로 외부앱 실행시키려면.. 꼭 package 명시해야..
@@ -120,6 +126,7 @@ class Test3_1Activity : AppCompatActivity() {
         binding.stopBtn.setOnClickListener {
             val msg = Message()
             msg.what = 20
+            //a.......................
             messenger.send(msg)
             unbindService(connection)
             //코루틴 동작중이면.. 종료시켜야..

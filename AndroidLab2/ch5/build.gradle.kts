@@ -34,6 +34,10 @@ android {
         jvmTarget = "11"
     }
     viewBinding.isEnabled = true
+
+    buildFeatures {
+        aidl = true
+    }
 }
 
 dependencies {

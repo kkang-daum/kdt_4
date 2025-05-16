@@ -9,11 +9,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLab2">
         <service
+            android:name=".MyAIDLService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.ch5_outer.ACTION_SERVICE_AIDL"/>
+            </intent-filter>
+        </service>
+        <service
             android:name=".MyMessengerService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.example.ch5_outer.ACTION_SERVICE_Messenger"/>
+                <action android:name="com.example.ch5_outer.ACTION_SERVICE_Messenger" />
             </intent-filter>
         </service>
 

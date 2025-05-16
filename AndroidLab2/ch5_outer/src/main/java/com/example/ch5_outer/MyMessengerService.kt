@@ -38,6 +38,7 @@ class MyMessengerService : Service() {
         //외부에서 send 하는 순간 실행.. 매개변수는 외부에서 전달한 데이터..
         override fun handleMessage(msg: Message) {
             when(msg.what){
+                //5.........................
                 10 -> {
                     //음원 play 요청이라고 가정..
                     //외부에서 전달한 데이터중에.. 결과 데이터를 받을 messenger 까지도 넘어왔다..
@@ -51,6 +52,7 @@ class MyMessengerService : Service() {
                             val replyBundle = Bundle()
                             replyBundle.putInt("duration", player.duration)
                             replyMsg.obj = replyBundle
+                            //6..............
                             replyMessenger.send(replyMsg)//외부에 데이터 전달 순간..
 
                             //음원 play...
@@ -60,6 +62,7 @@ class MyMessengerService : Service() {
                         }
                     }
                 }
+                //b.....................
                 20 -> {
                     //stop 요청...
                     if(player.isPlaying)
@@ -70,6 +73,7 @@ class MyMessengerService : Service() {
     }
 
     override fun onBind(intent: Intent): IBinder {
+        //2.......................
         messager = Messenger(IncomingHandler(this))
         return messager.binder
     }
