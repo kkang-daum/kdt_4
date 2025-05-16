@@ -94,5 +94,10 @@ class Test4_1Activity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
+        if(connectionMode == "aidl"){
+            unbindService(connection)
+        }
+        connectionMode = "none"
+        changeViewEnable()
     }
 }
