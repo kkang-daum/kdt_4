@@ -46,4 +46,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //구글의 다양한 서비스를 위한 라이브러리..
+    //fused api, google map 등..
+    implementation("com.google.android.gms:play-services:12.0.1")
 }
