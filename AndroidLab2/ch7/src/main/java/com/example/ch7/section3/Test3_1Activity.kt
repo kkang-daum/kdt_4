@@ -65,3 +65,34 @@ class Test3_1Activity : AppCompatActivity(), OnMapReadyCallback {
         googleMap?.addMarker(markerOption)
     }
 }
+//AndroidManifest.xml
+//- 퍼미션...
+//- Map key
+//- play service version
+
+
+
+//개발자 컴퓨터에서 SHA1 지문.. 획득...
+//앱을 빌드할 대 사용했던 키를 이용해야 한다..
+//정식 배포용 앱이라면.. 앱 빌드시에 정식으로 만든 키 이용..
+//테스트용은 디버그 키 이용...
+
+//디버그 키 이용...............
+//gradle signingReport
+
+//개발자 사이트(console) 에서.. 맵키 얻기...
+//https://console.cloud.google.com/
+
+//android map api 사용하겠다고 설정...
+//메뉴 -> API 및 서비스 -> 라이브러리
+//Maps SDK For Android 클릭..
+//"API 사용 설정됨" 으로 만들어야..
+
+//메뉴 -> API 및 서비스 -> 사용자 인증 정보
+//"+사용자 인증정보 만들기" -> API 키
+//"API 키 수정" 클릭으로 앱 정보 등록..
+
+//"Android 앱" 선택
+
+//package, sha1 등록..
+//키 제한 -> Maps SDK for Android 선택
