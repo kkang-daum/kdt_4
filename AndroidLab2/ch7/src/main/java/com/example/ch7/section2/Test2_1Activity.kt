@@ -3,6 +3,7 @@ package com.example.ch7.section2
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +32,7 @@ class Test2_1Activity : AppCompatActivity() {
             insets
         }
         binding.locationBtn.setOnClickListener {
+
             //위치 정보 획득 api
             val providerClient: FusedLocationProviderClient =
                 LocationServices.getFusedLocationProviderClient(this)
@@ -40,6 +42,7 @@ class Test2_1Activity : AppCompatActivity() {
             val connectionCallback = object: GoogleApiClient.ConnectionCallbacks {
                 //이용 가능시의 callback..
                 override fun onConnected(p0: Bundle?) {
+                    Log.d("kkang", "onConnected...........")
                     //위치 획득...
                     if(ContextCompat.checkSelfPermission(
                         this@Test2_1Activity,
@@ -49,6 +52,7 @@ class Test2_1Activity : AppCompatActivity() {
                             this@Test2_1Activity,
                             object : OnSuccessListener<Location> {
                                 override fun onSuccess(p0: Location?) {
+                                    Log.d("kkang", "onsuccess...........")
                                     val latitude = p0?.latitude
                                     val longitude = p0?.longitude
 
@@ -79,7 +83,17 @@ class Test2_1Activity : AppCompatActivity() {
                 .build()
 
             //위치정보 제공자 결정.... 결과는 각종 등록된 콜백이 호출되면서...
+            Log.d("kkang", "1...........")
             apiClient.connect()
         }
     }
 }
+
+
+//Duplicate class android.support.v4.app.INotificationSideChannel found...... 등의 에러...
+
+//google 에서 android 개발자를 위해 제공하는 라이브러리....
+//초기에는 support 라이브러리라고 불렀다.. android.support.xxx.xxx
+//2017년부터.. androidx 로 변경.. jetpack 으로 통합 관리...
+//오래된 어떤 라이브러리가.. 내부적으로 support 라이브러리를 사용하고 있다면..
+//지원하라고.. 선언해주어야 한다.. gradle.properties 에....
