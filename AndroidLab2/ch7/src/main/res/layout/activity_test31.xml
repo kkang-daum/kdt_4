@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--google map. fragment 로 제공한다..-->
+<androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".section3.Test3_1Activity"
+    android:name="com.google.android.gms.maps.SupportMapFragment">
+
+</androidx.fragment.app.FragmentContainerView>

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -31,6 +32,17 @@ class Test2_1Activity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val launcher = registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ){
+            if(it){
+                Toast.makeText(this, "permission ok..", Toast.LENGTH_SHORT).show()
+            }else {
+                Toast.makeText(this, "permission denied..", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         binding.locationBtn.setOnClickListener {
 
             //위치 정보 획득 api
@@ -60,6 +72,8 @@ class Test2_1Activity : AppCompatActivity() {
                                 }
                             }
                         )
+                    }else {
+                        launcher.launch("android.permission.ACCESS_FINE_LOCATION")
                     }
                 }
                 //이용하던 제공자가 이용 불가능 상태로 변하는 순간..
