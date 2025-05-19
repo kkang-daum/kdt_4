@@ -96,6 +96,8 @@ class Test1_1Activity : AppCompatActivity() {
                     phoneNumber = telephonyManager.line1Number
                 }
 
+                Log.d("kkang", phoneNumber)
+
                 getRequestNetwork()
             }else {
                 launcher.launch(arrayOf(Manifest.permission.READ_PHONE_STATE,
