@@ -8,13 +8,22 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".section3.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AndroidLab2"
-        android:name=".section3.MyApplication">
+        android:theme="@style/Theme.AndroidLab2">
+        <activity
+            android:name=".section4.Test4_1Activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".section3.Test3_1Activity"
             android:exported="true">
