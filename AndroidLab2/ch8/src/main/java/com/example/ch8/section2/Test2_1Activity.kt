@@ -66,7 +66,11 @@ class Test2_1Activity : AppCompatActivity() {
                 val map = mutableMapOf<String, String>(
                     "User-agent" to "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
                 )
+                return map
             }
         }
+
+        //서버 연동 시점...
+        queue.add(request)
     }
 }
