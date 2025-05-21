@@ -40,7 +40,7 @@ fun main() = runBlocking{
 //==>동시에 코루틴 3개를 구동시킨 것임으로.. 시작은 스레드 3개를 사용했다..
 //유휴 상태 후에.. 각 코루틴 종료시.. 시작한 스레드에서 종료되지 않았다..
 //종료시점에 동작하고 있는 스레드는 1개이다..
-//==>더 적은 thread
+//==>더 적은 thread 로 업무 진행 가능성이 있다는 의미...
 //coroutine... one start : DefaultDispatcher-worker-1
 //coroutine... two start : DefaultDispatcher-worker-2
 //coroutine... three start : DefaultDispatcher-worker-3
