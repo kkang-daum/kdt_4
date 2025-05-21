@@ -40,5 +40,9 @@ fun main() = runBlocking {
     println("coroutine $count, total time : $time")
 
 }
+//==>thread 10000개를 만들면.. 실행시에.. 10000개의 스레드가 만들어졌다가 종료..
+//==>코드에서 비동기 업무는 10000개를 만들었지만..그 코루틴을 실행시킨
+// thread 가 10000개라는 이야기는아니다.
+
 //thread 10000, total time : 3670
 //coroutine 10000, total time : 1191
