@@ -55,6 +55,8 @@ fun main() = runBlocking{
     var isCompleted = job3.complete()//명시적으로 외부에서 complete 상태로 만든 경우이다..
     //cancel 효과가 난다..
     println("main step3... ${isCompleted}")
+
+    delay(2000)
     //main step3... true
     //==>업무가 정상적으로 진행되었고.. 현재.. complete상태야..
 
