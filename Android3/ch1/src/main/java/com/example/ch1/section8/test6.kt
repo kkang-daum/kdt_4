@@ -1,7 +1,14 @@
 package com.example.ch1.section8
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 //MutableStateFlow vs stateIn()
 //쇼핑카트 업무를 구현한다고 가정해보자... 물건이 추가되거나.. 제거되기도 하고..
@@ -35,13 +42,44 @@ class ShoppingCart1 {
             currentItems.add(item)
         }
         //데이터 발행해야 한다..
-        _items.value
+        _items.value = currentItems
+        updateTotal()
     }
     fun removeItem(itemId: Int){
-
+        _items.value = _items.value.filter { it.id != itemId }//발행...
+        updateTotal()
     }
     private fun updateTotal(){
-
+        _total.value = _items.value.sumOf { it.price * it.quantity }//발행...
     }
 
+}
+
+fun main() = runBlocking {
+    val scope = CoroutineScope(Dispatchers.Default + SupervisorJob())
+
+    //MutableStateFlow...................................
+    val cart1 = ShoppingCart1()
+
+    launch {
+        cart1.items.collect { items ->
+            println("cart1...${items.map { "${it.name} - ${it.quantity}" }}")
+        }
+    }
+    launch {
+        cart1.total.collect {
+            println("total price... $it")
+        }
+    }
+
+    delay(100)
+    cart1.addItem(CartItem(1, "product1", 10.0, 2))
+    delay(200)
+    cart1.addItem(CartItem(2, "product2", 20.0, 1))
+    delay(200)
+    cart1.addItem(CartItem(1, "product1", 10.0, 1))
+    delay(200)
+    cart1.removeItem(2)
+
+    delay(1000)
 }
