@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "Android3"
 include(":app")
 include(":ch1")
+include(":ch2")
