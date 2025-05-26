@@ -9,6 +9,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.ch1.R
 import com.example.ch1.databinding.ActivityTest2Binding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class Test2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +37,12 @@ class Test2Activity : AppCompatActivity() {
 
             //이 부분을 도와 주기 위해서 안드로이드에서 추가된 scope 를 이용해서 개발..
             //액티비티, 프레그먼트, viewmodel 등과 동일 라이프사이클로 동작하는 scope...
-            lifecycleScope
+            lifecycleScope.launch {
+                repeat(5){
+                    Log.d("kkang", "coroutine $it")
+                    delay(1000)
+                }
+            }
         }
     }
 
