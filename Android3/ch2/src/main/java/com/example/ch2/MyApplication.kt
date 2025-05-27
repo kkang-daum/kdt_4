@@ -2,14 +2,24 @@ package com.example.ch2
 
 import androidx.multidex.MultiDexApplication
 import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 
 //multidex 설정... build.gradle.ktx 에 설정하고 Application 클래스를 MultiDexApplication
 //상속으로..
 class MyApplication: MultiDexApplication() {
+
+    override fun onCreate() {
+        super.onCreate()
+        FirebaseApp.initializeApp(this)
+    }
+
     companion object {
-        val auth: FirebaseAuth = Firebase.auth
+
+        val auth: FirebaseAuth by lazy {
+            Firebase.auth
+        }
 
         var email: String? = null
         fun checkAuth(): Boolean {
