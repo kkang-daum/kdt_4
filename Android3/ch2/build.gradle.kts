@@ -60,4 +60,7 @@ dependencies {
     implementation("androidx.multidex:multidex:2.0.1")
     //auth - email/password
     implementation("com.google.firebase:firebase-auth-ktx:23.2.1")
+
+    //firestore
+    implementation("com.google.firebase:firebase-firestore:25.1.4")
 }

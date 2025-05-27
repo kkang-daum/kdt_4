@@ -5,6 +5,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FirebaseFirestore
 
 //multidex 설정... build.gradle.ktx 에 설정하고 Application 클래스를 MultiDexApplication
 //상속으로..
@@ -19,6 +20,10 @@ class MyApplication: MultiDexApplication() {
 
         val auth: FirebaseAuth by lazy {
             Firebase.auth
+        }
+
+        val db: FirebaseFirestore by lazy {
+            FirebaseFirestore.getInstance()
         }
 
         var email: String? = null
