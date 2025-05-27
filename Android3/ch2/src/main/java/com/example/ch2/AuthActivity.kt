@@ -86,6 +86,8 @@ class AuthActivity : AppCompatActivity() {
             val email = binding.authEmailEditView.text.toString()
             val password = binding.authPasswordEditView.text.toString()
 
+
+
             //firebase 에.. 유저 입력 데이터 전달.. 회원가입.. 결과는 콜백으로..
             MyApplication.auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this){ task ->
