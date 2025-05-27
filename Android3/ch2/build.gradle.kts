@@ -16,6 +16,11 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        //multi dex 설정..
+        //하나의 앱에서 최대 65000개의 함수만 참조 가능..
+        //그 이상의 함수가 로딩되어야 하는 경우..
+        multiDexEnabled = true
     }
 
     buildTypes {
@@ -34,6 +39,7 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    viewBinding.isEnabled = true
 }
 
 dependencies {
@@ -47,6 +53,11 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    //firebase core.....
     implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
     implementation("com.google.firebase:firebase-analytics")
+    //multidex
+    implementation("androidx.multidex:multidex:2.0.1")
+    //auth - email/password
+    implementation("com.google.firebase:firebase-auth-ktx:23.2.1")
 }
