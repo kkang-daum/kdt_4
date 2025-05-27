@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
                     DividerItemDecoration.VERTICAL
                 ))
             }
-            .addOnFailureListener { exception -> 
+            .addOnFailureListener { exception ->
                 Log.d("kkang", "error, $exception")
             }
     }
