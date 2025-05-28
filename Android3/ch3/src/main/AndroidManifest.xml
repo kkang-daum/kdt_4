@@ -9,6 +9,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android3">
         <activity
+            android:name=".section1.Test1_2TwoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".section1.Test1_2OneActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".section1.Test1_1Activity"
             android:exported="true">
             <intent-filter>
