@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-<!--    사이즈 리소스... custom view 에서 드로잉 할때 사용할려고..
-폰사이즈 호환성때문에..-->
-    <dimen name="myview_size">40dp</dimen>
-    <dimen name="myview_stroke_width">7dp</dimen>
-</resources>

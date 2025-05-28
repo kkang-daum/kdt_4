@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- 외장 앱별의 파일을 외부 앱에게 공개하기 위해서..
-이 xml, AndroidManifest 에 등록시켜야 한다..-->
-<paths xmlns:android="http://schemas.android.com/apk/res/android">
-    <external-path
-        name="myfiles"
-        path="Android/data/com.example.ch2/files/Pictures"/>
-</paths>
