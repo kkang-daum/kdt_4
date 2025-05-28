@@ -87,5 +87,9 @@ class ListFragment: Fragment() {
                 return false
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        //메뉴 구성이 fragment 에서 한거지만.. activity 내용이다..
+        //fragment 에서 구성한 메뉴가 언제 나와야 하는지에 대한 정보를 제어할 수 있다..
+        //viewLifecycleOwner - Fragment 가 View 를 가지고 있는 경우에만 메뉴가 활성화 되라..(화면이 출력되는 동안)
+        //Lifecycle.State.RESUMED - 언제.. RESUME 상황에서 뿌리면 된다..
     }
 }
