@@ -1,6 +1,7 @@
 package com.example.ch3.section2
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -32,8 +33,17 @@ class Test2_1Activity : AppCompatActivity() {
             }
         })
 
+        //LiveData... 주력으로 사용하는 곳은 ViewModel - Activity(Fragment)
+        //필요한곳 아무곳에서나 이용이 가능..
+        val myLiveData = MyLiveData()
+        myLiveData.observe(this){
+            Log.d("kkang", it)
+        }
+
         binding.button.setOnClickListener {
             viewModel.changeCount()
+
+            myLiveData.sayHello("kim")
         }
     }
 }
