@@ -49,4 +49,10 @@ dependencies {
 
     //fragment 를 위한 다양한 확장 함수를 제공하는 라이브러리..
     implementation("androidx.fragment:fragment-ktx:1.8.7")
+
+    //mission1 에서 등록........
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
 }
