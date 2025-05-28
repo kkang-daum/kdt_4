@@ -1,5 +1,6 @@
 package com.example.ch3.mission1.recyclerview
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
@@ -8,7 +9,7 @@ import com.example.ch3.databinding.ItemMainBinding
 import com.example.ch3.mission1.model.Item
 
 
-class ItemAdapter (val datas: List<Item>): RecyclerView.Adapter<ItemViewHolder>() {
+class ItemAdapter (val context: Context, val datas: List<Item>): RecyclerView.Adapter<ItemViewHolder>() {
 
     override fun getItemCount(): Int {
         return datas.size
