@@ -8,4 +8,8 @@
         android:id="@+id/AFragment"
         android:name="com.example.ch3.section4.AFragment"
         android:label="AFragment" />
+    <fragment
+        android:id="@+id/BFragment"
+        android:name="com.example.ch3.section4.BFragment"
+        android:label="BFragment" />
 </navigation>

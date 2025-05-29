@@ -11,4 +11,10 @@
         android:textSize="30dp"
         android:text="A Fragment"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="go B"
+        android:id="@+id/button"/>
+
 </LinearLayout>

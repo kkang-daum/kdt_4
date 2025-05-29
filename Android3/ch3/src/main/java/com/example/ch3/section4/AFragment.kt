@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import com.example.ch3.R
 import com.example.ch3.databinding.FragmentABinding
 
 class AFragment: Fragment() {
@@ -14,6 +16,12 @@ class AFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentABinding.inflate(inflater)
+
+        binding.button.setOnClickListener {
+            val controller = Navigation.findNavController(it)
+            //case 1 - 이동 대상의 destination id 등록으로..
+            controller.navigate(R.id.BFragment, savedInstanceState)
+        }
 
         return binding.root
     }
