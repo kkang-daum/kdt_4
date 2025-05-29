@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<!--일반적인 메뉴 xml 만들듯이 동일하게 만든다..
+단, 메뉴 id 를 destination 의 id 와 동일하게 등록-->
+    <item
+        android:id="@+id/AFragment"
+        android:title="Go A"/>
+    <item
+        android:id="@+id/BFragment"
+        android:title="Go B"/>
+</menu>

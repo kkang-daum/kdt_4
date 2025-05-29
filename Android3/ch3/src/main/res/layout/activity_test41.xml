@@ -19,6 +19,11 @@
 <!--        app:defaultNavHost="true"-->
 <!--        app:navGraph="@navigation/nav_graph"/>-->
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar"/>
+
 <!--    case2 - activity code 에서 graph xml 지정.. -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
