@@ -23,7 +23,12 @@ class AFragment: Fragment() {
 //            controller.navigate(R.id.BFragment, savedInstanceState)
 
             //case 2 - nav graph 의 action id 로 이동..
-            controller.navigate(R.id.action_AFragment_to_BFragment3)
+
+            val bundle = Bundle()
+            bundle.putString("aArg", "hello")
+            bundle.putInt("bArg", 20)
+
+            controller.navigate(R.id.action_AFragment_to_BFragment3, bundle)
         }
 
         return binding.root
