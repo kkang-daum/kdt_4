@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android3">
         <activity
+            android:name=".section4.Test4_1Activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".section3.SomeActivity"
             android:exported="false" />
         <activity
