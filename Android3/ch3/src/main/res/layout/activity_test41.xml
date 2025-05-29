@@ -10,13 +10,21 @@
 <!--    activity 가 nav graph 에 있는데로.. 화면을 출력
     case 1 - activity layout xml 에서.. nav graph xml 등록으로..
 -->
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:id="@+id/nav_host_fragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="1"-->
+<!--        android:name="androidx.navigation.fragment.NavHostFragment"-->
+<!--        app:defaultNavHost="true"-->
+<!--        app:navGraph="@navigation/nav_graph"/>-->
+
+<!--    case2 - activity code 에서 graph xml 지정.. -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph"/>
+        />
 
 </LinearLayout>
