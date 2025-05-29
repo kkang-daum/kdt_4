@@ -60,6 +60,13 @@ class Test5_1Activity : AppCompatActivity(), CoroutineScope {
             dao.insertUser(user1)
             dao.insertUser(user2)
             dao.insertUser(user3)
+
+            var resultTxt = ""
+
+            dao.getAll().forEach {
+                resultTxt += "$it \n"
+            }
+            binding.resultView.text = resultTxt
         }
     }
 }
