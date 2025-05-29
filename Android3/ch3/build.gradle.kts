@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")//annotation 분석..
 }
 
 android {
@@ -61,4 +62,8 @@ dependencies {
 
     //lifecycle - process
     implementation("androidx.lifecycle:lifecycle-process:2.9.0")
+
+    //room......
+    implementation("androidx.room:room-ktx:2.7.1")
+    ksp("androidx.room:room-compiler:2.7.1")
 }
