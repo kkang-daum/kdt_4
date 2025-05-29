@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/AFragment"
         android:name="com.example.ch3.section4.AFragment"
-        android:label="AFragment" />
+        android:label="AFragment" >
+        <action
+            android:id="@+id/action_AFragment_to_BFragment3"
+            app:destination="@id/BFragment" />
+    </fragment>
     <fragment
         android:id="@+id/BFragment"
         android:name="com.example.ch3.section4.BFragment"

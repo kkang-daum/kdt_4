@@ -20,7 +20,10 @@ class AFragment: Fragment() {
         binding.button.setOnClickListener {
             val controller = Navigation.findNavController(it)
             //case 1 - 이동 대상의 destination id 등록으로..
-            controller.navigate(R.id.BFragment, savedInstanceState)
+//            controller.navigate(R.id.BFragment, savedInstanceState)
+
+            //case 2 - nav graph 의 action id 로 이동..
+            controller.navigate(R.id.action_AFragment_to_BFragment3)
         }
 
         return binding.root
