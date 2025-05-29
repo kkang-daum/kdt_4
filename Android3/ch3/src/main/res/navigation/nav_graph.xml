@@ -15,5 +15,13 @@
     <fragment
         android:id="@+id/BFragment"
         android:name="com.example.ch3.section4.BFragment"
-        android:label="BFragment" />
+        android:label="BFragment" >
+        <argument
+            android:name="aArg"
+            app:argType="string" />
+        <argument
+            android:name="bArg"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>
