@@ -137,7 +137,9 @@ class ListFragment: Fragment() {
 
                         //추천단어를 하나 선택했을 때..
                         searchAutoComplete.setOnItemClickListener { parent, _, position, _ ->
-                            
+                            val selectedItem = parent.getItemAtPosition(position) as String
+                            searchAutoComplete.setText(selectedItem)
+                            searchView.setQuery(selectedItem, true)
                         }
                     }
                 }
