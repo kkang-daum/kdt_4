@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("com.google.devtools.ksp")//annotation 분석..
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
