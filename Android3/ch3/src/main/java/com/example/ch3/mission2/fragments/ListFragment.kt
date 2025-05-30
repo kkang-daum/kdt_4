@@ -48,6 +48,7 @@ class ListFragment: Fragment() {
         val navController = findNavController()
         itemAdapter = ItemAdapter(activity as Context, datas) { url ->
             val direction = ListFragmentDirections.actionListFragmentToWebFragment(url)
+            navController.navigate(direction)
         }
 
 

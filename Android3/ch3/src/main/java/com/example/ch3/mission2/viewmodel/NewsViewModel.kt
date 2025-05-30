@@ -3,9 +3,9 @@ package com.example.ch3.mission2.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.ch3.mission1.model.Item
-import com.example.ch3.mission1.model.PageList
-import com.example.ch3.mission1.repository.NewsRepository
+import com.example.ch3.mission2.model.Item
+import com.example.ch3.mission2.model.PageList
+import com.example.ch3.mission2.repository.NewsRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

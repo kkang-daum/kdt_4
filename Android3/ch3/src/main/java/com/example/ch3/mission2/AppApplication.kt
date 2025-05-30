@@ -1,7 +1,7 @@
 package com.example.ch3.mission2
 
 import android.app.Application
-import com.example.ch3.mission1.retrofit.RetrofitService
+import com.example.ch3.mission2.retrofit.RetrofitService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

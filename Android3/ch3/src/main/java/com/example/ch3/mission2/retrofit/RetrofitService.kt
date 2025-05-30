@@ -1,7 +1,7 @@
 package com.example.ch3.mission2.retrofit
 
 
-import com.example.ch3.mission1.model.PageList
+import com.example.ch3.mission2.model.PageList
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
