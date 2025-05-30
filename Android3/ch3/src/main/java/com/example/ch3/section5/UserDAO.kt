@@ -13,4 +13,10 @@ interface UserDAO {
 
     @Insert
     fun insertUser(user: User)
+
+    @Query("SELECT * FROM user2")
+    fun getAll2(): List<User2>
+
+    @Insert
+    fun insertUser2(user: User2)
 }
