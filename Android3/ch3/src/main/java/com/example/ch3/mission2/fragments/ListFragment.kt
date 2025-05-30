@@ -8,6 +8,8 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
@@ -15,13 +17,17 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ch3.R
 import com.example.ch3.databinding.FragmentListBinding
 import com.example.ch3.mission2.model.Item
 import com.example.ch3.mission2.recyclerview.ItemAdapter
+import com.example.ch3.mission2.room.Search
 import com.example.ch3.mission2.viewmodel.NewsViewModel
+import com.example.ch3.mission2.viewmodel.SearchViewModel
+import kotlinx.coroutines.launch
 
 
 class ListFragment: Fragment() {
@@ -31,6 +37,8 @@ class ListFragment: Fragment() {
     val viewModel: NewsViewModel by viewModels()
     val datas = mutableListOf<Item>()
     lateinit var itemAdapter: ItemAdapter
+
+    val searchViewModel: SearchViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -89,10 +97,50 @@ class ListFragment: Fragment() {
                     }
 
                     override fun onQueryTextSubmit(query: String?): Boolean {
+                        //newsapi 에서 network 으로 데이터 획득해서 화면에 뿌리고..
                         getData(query ?: "travel")
+
+                        //검색어를 저장하고 싶다..
+                        query?.run {
+                            searchViewModel.insertSearch(Search(0, query))
+                        }
+
                         return false
                     }
                 })
+
+                val searchTxtList = mutableListOf<String>()
+
+                //fragment 를 위한 코루틴 스코프는 두개 제공한다..
+//                lifecycleScope - fragment 가 종료 될때까지..
+
+                //fragment 가 살아 있다고 하더라도.. fragment 가 출력한 뷰가 제거 될때..까지...
+                viewLifecycleOwner.lifecycleScope.launch {
+                    //flow 데이터 발행 구독.. UI 에 방해되지 않게.. 코루틴으로 구독..
+                    searchViewModel.searchFlow.collect {
+                        it.forEach {
+                            searchTxtList.add(it.searchTxt)
+                        }
+                        //과거 ListView 에서 많이 사용했던 adapter 인데.. ListView 는 더이상 안쓰이지만
+                        //항목에 문자열 하나 출력하는 용도로 ArrayAdapter 는 여전히 많이 사용..
+                        val suggestionsAdapter = ArrayAdapter(
+                            requireContext(),
+                            android.R.layout.simple_dropdown_item_1line,//항목 layout xml
+                            searchTxtList
+                        )
+
+                        val searchAutoComplete = searchView.findViewById<AutoCompleteTextView>(
+                                androidx.appcompat.R.id.search_src_text
+                        )
+                        searchAutoComplete.threshold = 2//2글자 입력부터 추천단어 띄우자..
+                        searchAutoComplete.setAdapter(suggestionsAdapter)
+
+                        //추천단어를 하나 선택했을 때..
+                        searchAutoComplete.setOnItemClickListener { parent, _, position, _ ->
+                            
+                        }
+                    }
+                }
             }
             //메뉴 이벤트..
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
