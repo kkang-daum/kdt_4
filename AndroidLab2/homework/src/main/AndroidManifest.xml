@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+<!--    foreground service 에서 진행하는 업무에 따라 추가 퍼미션이 필요할 수도 있다..-->
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AndroidLab2"
+        android:name=".MyApplication">
+<!--        foreground service 는 어떤 업무를 진행할 것인지 명시..-->
+        <service
+            android:name=".UpdateService"
+            android:enabled="true"
+            android:exported="true"
+            android:foregroundServiceType="shortService"></service>
+
+        <receiver
+            android:name=".UpdateActionReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service
+            android:name=".MyJobService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

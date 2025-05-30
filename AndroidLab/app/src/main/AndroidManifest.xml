@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<!--
+xml 파일 내에 속성 값이..
+@로 시작한다.. 리소스..
+android:icon="@mipmap/ic_launcher"
+mipmap 폴더의 ic_launcher 파일..
+-->
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AndroidLab"
+        tools:targetApi="31">
+<!--        안드로이드의 매인 아키턱처 : 컴포넌트 기반...
+컴포넌트는 개발자가 만든 클래스, 런타임시점에.. 시스템에서 라이프사이클 관리..
+
+런타임 시점에 시스템은 이 manifest 파일만 보고 우리 앱을 실행시킨다..
+==>개발자가 만든 컴포넌트 클래스.. manifest 에 꼭 등록해야 한다..
+==>액티비티 5개 -> <activity> 태그 5개
+<service><receiver><provider>
+-->
+
+<!--        액티비티 등록시에.. 클래스명(name) 만 필수, 모두 생략 가능..-->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+<!--            생략이 가능하지만.. 아래처럼 구성된 activity 가...
+유저 아이콘 터치시에 실행될 액티비티라는 설정..-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

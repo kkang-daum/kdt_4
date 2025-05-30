@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    뷰의 속성중복을 위한.. -->
+    <style name="MyTextStyle">
+        <item name="android:textSize">@dimen/txt_size</item>
+        <item name="android:textColor">@color/txt_color</item>
+    </style>
+<!--    스타일을 선언하면서.. 다른 스타일을 상속 개념으로.. 이용..-->
+    <style name="MyTextStyleSub" parent="MyTextStyle">
+<!--        부모 정의 스타일 오버라이드..   -->
+        <item name="android:textColor">#0000FF</item>
+        <item name="android:background">@color/txt_bg_color</item>
+    </style>
+</resources>
