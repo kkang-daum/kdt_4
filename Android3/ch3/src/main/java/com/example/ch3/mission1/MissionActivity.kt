@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.ch3.R
-import com.example.ch3.mission1.fragments.ListFragment
+import com.example.ch3.mission2.fragments.ListFragment
 
 class MissionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
