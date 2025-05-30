@@ -2,6 +2,7 @@ package com.example.ch3.mission2.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -121,6 +122,7 @@ class ListFragment: Fragment() {
                         it.forEach {
                             searchTxtList.add(it.searchTxt)
                         }
+                        Log.d("kkang", "1111, ${it.size}")
                         //과거 ListView 에서 많이 사용했던 adapter 인데.. ListView 는 더이상 안쓰이지만
                         //항목에 문자열 하나 출력하는 용도로 ArrayAdapter 는 여전히 많이 사용..
                         val suggestionsAdapter = ArrayAdapter(
@@ -143,6 +145,7 @@ class ListFragment: Fragment() {
                         }
                     }
                 }
+                searchViewModel.getAllSearch()
             }
             //메뉴 이벤트..
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
