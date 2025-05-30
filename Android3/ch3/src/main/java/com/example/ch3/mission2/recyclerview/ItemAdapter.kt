@@ -13,8 +13,8 @@ import com.example.ch3.mission1.fragments.WebFragment
 import com.example.ch3.mission1.model.Item
 
 
-class ItemAdapter (val context: Context, val datas: List<Item>): RecyclerView.Adapter<ItemViewHolder>() {
-
+//class ItemAdapter (val context: Context, val datas: List<Item>): RecyclerView.Adapter<ItemViewHolder>() {
+class ItemAdapter (val context: Context, val datas: List<Item>, val callback: (String) -> Unit): RecyclerView.Adapter<ItemViewHolder>() {
     override fun getItemCount(): Int {
         return datas.size
     }
@@ -34,11 +34,14 @@ class ItemAdapter (val context: Context, val datas: List<Item>): RecyclerView.Ad
 
             visit.setOnClickListener {
                 //WebFragment 실행..
-                (context as AppCompatActivity).supportFragmentManager.beginTransaction().run {
-                    replace(R.id.main, WebFragment(item.url))
-                    addToBackStack(null)
-                    commit()
-                }
+//                (context as AppCompatActivity).supportFragmentManager.beginTransaction().run {
+//                    replace(R.id.main, WebFragment(item.url))
+//                    addToBackStack(null)
+//                    commit()
+//                }
+
+                //생성자 매개변수로 전달된 callback 함수만 호출해서.. callback 에서 화면 전환 처리되게..
+                callback(item.url)
             }
             Glide.with(context)
                 .load(item.urlToImage)

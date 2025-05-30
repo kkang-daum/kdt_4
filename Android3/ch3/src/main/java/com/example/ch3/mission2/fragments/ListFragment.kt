@@ -15,12 +15,14 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ch3.R
 import com.example.ch3.databinding.FragmentListBinding
-import com.example.ch3.mission1.model.Item
-import com.example.ch3.mission1.recyclerview.ItemAdapter
-import com.example.ch3.mission1.viewmodel.NewsViewModel
+import com.example.ch3.mission2.model.Item
+import com.example.ch3.mission2.recyclerview.ItemAdapter
+import com.example.ch3.mission2.viewmodel.NewsViewModel
+
 
 class ListFragment: Fragment() {
 
@@ -39,7 +41,16 @@ class ListFragment: Fragment() {
 
         //actionbar 내용.. toolbar 에...
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
-        itemAdapter = ItemAdapter(activity as Context, datas)
+
+
+
+//        itemAdapter = ItemAdapter(activity as Context, datas)
+        val navController = findNavController()
+        itemAdapter = ItemAdapter(activity as Context, datas) { url ->
+            val direction = ListFragmentDirections.actionListFragmentToWebFragment(url)
+        }
+
+
         binding.recycler.run {
             layoutManager = LinearLayoutManager(activity)
             adapter = itemAdapter
