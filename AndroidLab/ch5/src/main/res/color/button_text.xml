@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- 여러 색상이 같이 적용되어야 하는 경우.. -->
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="#ffff0000" android:state_pressed="true"/>
-    <item android:color="#ff0000ff" android:state_focused="true"/>
-    <item android:color="#ff000000" />
-</selector>

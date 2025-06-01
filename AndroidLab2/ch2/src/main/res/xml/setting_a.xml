@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <SwitchPreference
-        android:key="a1"
-        android:title="A - 1 Setting"/>
-    <SwitchPreference
-        android:key="a2"
-        android:title="A - 2 Setting"/>
-</androidx.preference.PreferenceScreen>
