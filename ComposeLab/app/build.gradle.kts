@@ -58,4 +58,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation("androidx.constraintlayout:constraintlayout-compose:1.1.1")
+    //coil....
+    implementation("io.coil-kt.coil3:coil-compose:3.1.0")
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.1.0")
+    //머티리얼 디자인의 아이콘을 지원하기 위한 라이브러리...
+    implementation("androidx.compose.material:material-icons-extended:1.7.6")
 }
