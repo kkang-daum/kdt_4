@@ -13,6 +13,17 @@
         android:theme="@style/Theme.ComposeLab"
         tools:targetApi="31">
         <activity
+            android:name=".section3.test3.Test3Activity"
+            android:exported="true"
+            android:label="@string/title_activity_test3"
+            android:theme="@style/Theme.ComposeLab">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".section3.test2.Test2Activity"
             android:exported="true"
             android:label="@string/title_activity_test2"

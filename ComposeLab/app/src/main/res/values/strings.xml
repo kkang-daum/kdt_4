@@ -3,4 +3,5 @@
     <string name="title_activity_test">TestActivity</string>
     <string name="title_activity_test1">Test1Activity</string>
     <string name="title_activity_test2">Test2Activity</string>
+    <string name="title_activity_test3">Test3Activity</string>
 </resources>
