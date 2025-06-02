@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ComposeLab</string>
     <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_test1">Test1Activity</string>
 </resources>
