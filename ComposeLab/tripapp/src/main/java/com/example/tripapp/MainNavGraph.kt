@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
+import com.example.tripapp.ui.about.AboutScreen
 import com.example.tripapp.ui.home.HomeScreen
 
 //MainActivity 에 의해 출력될.. composable 을 등록.. stack 으로 관리...
@@ -28,7 +29,12 @@ fun MainNavGraph(
         //화면이 많다면.. 각 composable 을 구조화 시켜서 등록시킬 수도 있다..
         navigation(startDestination = TripDestination.HOME_ROUTE, route = "main"){
             composable(TripDestination.HOME_ROUTE) {
-                HomeScreen()
+                HomeScreen(
+                    navigate = { navActions.navigate(it) }
+                )
+            }
+            composable(TripDestination.ABOUT_ROUTE) {
+                AboutScreen()
             }
         }
     }

@@ -36,6 +36,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tripapp.R
+import com.example.tripapp.TripDestination
 
 //HomeDrawer 의 메뉴 하나를 구성..
 @Composable
@@ -92,7 +93,8 @@ private fun DrawerHeader(
 @Composable
 fun HomeDrawer(
     closeDrawer: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navigate: (String) -> Unit
 ) {
     ModalDrawerSheet(modifier = modifier) {
         DrawerHeader()
@@ -108,6 +110,7 @@ fun HomeDrawer(
             icon = Icons.Filled.Info,
             modifier = Modifier.clickable {
                 closeDrawer()
+                navigate(TripDestination.ABOUT_ROUTE)
             }
         )
     }

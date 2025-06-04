@@ -39,6 +39,7 @@ fun HomeScreen(
     drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
     //drawer 의 close 함수가.. suspend 함수로 설계되어 있어서..
     coroutineScope: CoroutineScope = rememberCoroutineScope(),
+    navigate: (String) -> Unit
 ){
     val context = LocalContext.current
     var isSearchActive by remember { mutableStateOf(false) }
@@ -48,6 +49,7 @@ fun HomeScreen(
         drawerContent = {
             HomeDrawer(
                 closeDrawer = { coroutineScope.launch { drawerState.close() }},
+                navigate = { navigate(it) }
             )
         }
     ) {
