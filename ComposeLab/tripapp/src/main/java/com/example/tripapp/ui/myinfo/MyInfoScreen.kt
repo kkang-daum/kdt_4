@@ -36,6 +36,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.core.content.FileProvider
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
@@ -43,6 +44,7 @@ import com.example.tripapp.R
 import com.example.tripapp.data.myinfo.MyInfoData
 import com.example.tripapp.data.myinfo.insertInfo
 import java.io.File
+import java.io.FilePermission
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -218,7 +220,19 @@ fun MyInfoScreen(
             Spacer(modifier = Modifier.height(20.dp))
 
             Button(onClick = {
-
+                try {
+                    val photoFile = createImageFile()
+                    tempFilePath = photoFile.absolutePath
+                    cameraFileUri = FileProvider.getUriForFile(
+                        context,
+                        "${context.packageName}.fileprovider",
+                        photoFile
+                    )
+                    //카메라앱 실행..
+                    cameraLauncher.launch(cameraFileUri!!)
+                }catch (e: Exception){
+                    e.printStackTrace()
+                }
             }) {
                 Text("Camera App")
             }
