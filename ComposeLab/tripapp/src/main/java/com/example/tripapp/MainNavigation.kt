@@ -6,6 +6,7 @@ import androidx.navigation.NavController
 object TripDestination {
     const val HOME_ROUTE = "home"
     const val ABOUT_ROUTE = "about"
+    const val MYINFO_ROUTE = "myinfo"
 }
 
 //화면 전환시 호출할 함수..

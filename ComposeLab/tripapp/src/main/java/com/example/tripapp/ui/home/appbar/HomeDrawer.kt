@@ -29,12 +29,15 @@ import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
 import com.example.tripapp.R
 import com.example.tripapp.TripDestination
 
@@ -59,7 +62,9 @@ private fun DrawerButton(
 //drawer 윗 부분.....
 @Composable
 private fun DrawerHeader(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    email: String?,
+    photo: String?
 ){
     Column(
         verticalArrangement = Arrangement.Center,
@@ -69,16 +74,30 @@ private fun DrawerHeader(
             .height(192.dp)
             .padding(start = 30.dp)
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.user_basic),
-            contentDescription = "",
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(100.dp)
-                .clip(CircleShape)
-        )
+        if(photo != null){
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(photo)
+                    .build(),
+                contentDescription = "",
+                modifier = Modifier
+                    .size(150.dp)
+                    .clip(CircleShape),
+                contentScale = ContentScale.Crop
+            )
+        }else {
+            Image(
+                painter = painterResource(id = R.drawable.user_basic),
+                contentDescription = "",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .size(100.dp)
+                    .clip(CircleShape)
+            )
+        }
+
         Text(
-            text = "a@a.com",
+            text = "${email ?: ""}",
             style = TextStyle(
                 color = Color.White,
                 fontSize = 15.sp,
@@ -94,15 +113,18 @@ private fun DrawerHeader(
 fun HomeDrawer(
     closeDrawer: () -> Unit,
     modifier: Modifier = Modifier,
-    navigate: (String) -> Unit
+    navigate: (String) -> Unit,
+    email: String?,
+    photo: String?
 ) {
     ModalDrawerSheet(modifier = modifier) {
-        DrawerHeader()
+        DrawerHeader(email = email, photo = photo)
         DrawerButton(
             label = "개인정보 수정",
             icon = Icons.Filled.Edit,
             modifier = Modifier.clickable {
                 closeDrawer()
+                navigate(TripDestination.MYINFO_ROUTE)
             }
         )
         DrawerButton(
