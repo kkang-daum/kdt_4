@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "ComposeLab"
 include(":app")
- 
+include(":tripapp")
