@@ -90,6 +90,11 @@ fun HomeContent(
                 }
             }
         }
+        //항목의 갯수를 먼저 계산..
+        //한 항목에 두개의 card 가 나오게 처리..
+        val rowCount =
+            if(dataList.size % 2 == 0) dataList.size / 2
+            else dataList.size /2 +1
         items(){
 
         }
