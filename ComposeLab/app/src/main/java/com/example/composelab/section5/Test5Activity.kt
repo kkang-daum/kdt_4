@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -63,7 +64,7 @@ fun Greeting10(name: String, modifier: Modifier = Modifier) {
                 navController,
                 navBackStackEntry.arguments?.getString("userId"),
                 navBackStackEntry.arguments?.getInt("no")
-            )  
+            )
         }
         composable("onesub") { OneSubScreen(navController)  }
         composable("two") { TwoScreen(navController)  }
@@ -72,6 +73,10 @@ fun Greeting10(name: String, modifier: Modifier = Modifier) {
 
 @Composable
 fun HomeScreen(navController: NavController){
+
+    //two 로 화면 이동 시킬 것이고.. two 에서 되돌아 왔을 때의 결과 데이터..
+    val msg = navController.currentBackStackEntry?.savedStateHandle?.get<String>("msg")
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -80,11 +85,17 @@ fun HomeScreen(navController: NavController){
         verticalArrangement = Arrangement.Center
     ) {
         Text("I am HomeScreen", fontSize = 30.sp)
+        Button(onClick = { navController.navigate("one/kim/10") }) {
+            Text("Go One")
+        }
+        Button(onClick = { navController.navigate("two")}) {
+            Text("Go Two ${msg}")
+        }
     }
 }
 
 @Composable
-fun OneScreen(navController: NavController){
+fun OneScreen(navController: NavController, userId: String?, no: Int?){
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -92,7 +103,17 @@ fun OneScreen(navController: NavController){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text("I am OneScreen", fontSize = 30.sp)
+        Text("I am OneScreen , userId = $userId, no : $no", fontSize = 30.sp)
+        Button(onClick = {
+            navController.navigate("onesub"){
+                popUpTo("home")
+            }
+        }) {
+            Text("Go OneSub")
+        }
+        Button(onClick = { navController.popBackStack() }) {
+            Text("Back")
+        }
     }
 }
 
