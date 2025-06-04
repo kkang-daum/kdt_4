@@ -15,6 +15,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.example.tripapp.ui.about.AboutScreen
 import com.example.tripapp.ui.home.HomeScreen
+import com.example.tripapp.ui.myinfo.MyInfoScreen
+import com.example.tripapp.ui.myinfo.MyInfoViewModel
 
 
 //화면단위 composable 에서 이용할 viewModel 을 준비해서.. 매개변수로 전달하겠다..
@@ -52,12 +54,21 @@ fun MainNavGraph(
         //화면이 많다면.. 각 composable 을 구조화 시켜서 등록시킬 수도 있다..
         navigation(startDestination = TripDestination.HOME_ROUTE, route = "main"){
             composable(TripDestination.HOME_ROUTE) {
+                val viewModel = it.sharedViewModel<MyInfoViewModel>(navController)
                 HomeScreen(
-                    navigate = { navActions.navigate(it) }
+                    navigate = { navActions.navigate(it) },
+                    viewModel = viewModel
                 )
             }
             composable(TripDestination.ABOUT_ROUTE) {
                 AboutScreen()
+            }
+            composable(TripDestination.MYINFO_ROUTE) {
+                val viewModel = it.sharedViewModel<MyInfoViewModel>(navController)
+                MyInfoScreen(
+                    pop = { navActions.pop() },
+                    viewModel = viewModel
+                )
             }
         }
     }
