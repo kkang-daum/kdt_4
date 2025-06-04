@@ -95,8 +95,19 @@ fun HomeContent(
         val rowCount =
             if(dataList.size % 2 == 0) dataList.size / 2
             else dataList.size /2 +1
-        items(){
-
+        items(rowCount){
+            Row(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                HomeCardItem(
+                    dataList.get(it * 2),
+                    modifier = Modifier.weight(1f)
+                )
+                HomeCardItem(
+                    dataList.get(it * 2 +1),
+                    modifier = Modifier.weight(1f)
+                )
+            }
         }
     }
 }
