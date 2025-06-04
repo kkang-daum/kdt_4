@@ -127,6 +127,9 @@ fun OneSubScreen(navController: NavController){
         verticalArrangement = Arrangement.Center
     ) {
         Text("I am OneSubScreen", fontSize = 30.sp)
+        Button(onClick = { navController.popBackStack() }) {
+            Text("Back")
+        }
     }
 }
 
@@ -140,5 +143,12 @@ fun TwoScreen(navController: NavController){
         verticalArrangement = Arrangement.Center
     ) {
         Text("I am TwoScreen", fontSize = 30.sp)
+        //결과데이터를 포함해서.. 이전화면으로..
+        Button(onClick = {
+            navController.previousBackStackEntry?.savedStateHandle?.set("msg", "lee")
+            navController.popBackStack()
+        }) {
+            Text("Back")
+        }
     }
 }
