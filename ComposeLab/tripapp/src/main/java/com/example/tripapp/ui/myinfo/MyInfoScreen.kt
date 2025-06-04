@@ -7,6 +7,7 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,10 +32,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
+import com.example.tripapp.R
 import com.example.tripapp.data.myinfo.MyInfoData
 import com.example.tripapp.data.myinfo.insertInfo
 import java.io.File
@@ -179,6 +182,16 @@ fun MyInfoScreen(
                     model = ImageRequest.Builder(context)
                         .data(photo)
                         .build(),
+                    contentDescription = "",
+                    modifier = Modifier
+                        .size(150.dp)
+                        .clip(CircleShape),
+                    contentScale = ContentScale.Crop
+                )
+            }else {
+                //저장된 값이 없는 경우 리소스 이미지..
+                Image(
+                    painter = painterResource(R.drawable.user_basic),
                     contentDescription = "",
                     modifier = Modifier
                         .size(150.dp)
