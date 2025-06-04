@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">sol</string>
+
+    <string name="about_main">
+    아고다는 온라인 여행 및 관련 서비스 분야의 세계적인 선도 기업인 Booking Holdings Inc.의 일부입니다.
+    </string>
+    <string name="about_detail">
+    아고다는 전 세계 450만 개의 호텔과 휴가용 숙소로 구성된 글로벌 네트워크를 통해 모든 이가 어디든지 합리적인 상품으로 여행할 수 있도록 지원하며, 이를 위한 항공권 및 액티비티 또한 준비되어 있습니다. Agoda.com 및 아고다 모바일 앱은 39개 언어로 이용 가능하며 연중무휴 24시간 고객센터가 제공됩니다. Booking Holdings Inc. (Nasdaq: BKNG)에 속해 있는 아고다는 싱가포르 본사를 중심으로 전 세계 27개 국가/지역에서, 좀 더 쉽고 간편한 여행을 위해 최상의 테크놀로지와 함께 헌신하는 7,000명 이상의 직원이 함께하고 있습니다.
+    </string>
+    <string name="about_more">More</string>
+</resources>
