@@ -104,7 +104,7 @@ fun HomeContent(
                     modifier = Modifier.weight(1f)
                 )
                 HomeCardItem(
-                    dataList.get(it * 2 +1),
+                    dataList.get(it * 2 + 1),
                     modifier = Modifier.weight(1f)
                 )
             }
