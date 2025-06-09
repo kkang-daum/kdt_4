@@ -34,6 +34,16 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  english_words: ^4.0.0
+  # 각 패키지 등록할 때 버전 명시..
+  # minor 버전업은.. 하위호환성 유지..
+  # major 버전업은 하위호환성 지원 안한다..
+  # 4.0.0 으로 지정해도 된다.. 정확하게..4.0.0 을 사용하겠다는 의미..
+  # ^4.0.0 ==> 4.0.0 <=  < 5.0.0 사이의 버전을 사용하겠다는 의미..
+  # 어느 순간.. 4.1.1 로 버전업이 되었다.. 개발자가 버전을 변경하지 않고..
+  # pub upgrade 만 클릭하면.. 최신 버전 적용 가능.. 자동으로 4.1.1. 을 적용해준다..
+  # 패키지 신규 등록.. 로컬에 다운로드 되어야 한다.. "pub get" 클릭해야 적용..
+
 
 dev_dependencies:
   flutter_test:
