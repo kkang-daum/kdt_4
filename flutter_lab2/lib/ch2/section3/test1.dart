@@ -37,4 +37,40 @@ main() {
   print(mapList);//(200, 300, 400, 500, 600, 700, 800, 900)
   var whereList = list2.where((x) => x > 50);
   print(whereList);//(60, 70, 80, 90)
+
+  //List 의 다양한 생성자...................
+  //사이즈 고정...
+  var list3 = List<int>.filled(3, 0);
+  list3[0] = 10;
+  // list3.add(40);//error... Unsupported operation: Cannot add to a fixed-length list
+  print(list3);//[10, 0, 0]
+
+  //사이즈 가변...
+  var list4 = List<int>.filled(3, 0, growable: true);
+  list4.add(40);
+  print(list4);//[0, 0, 0, 40]
+
+  //로직에 의한 결과를 초기값으로 지정..
+  var list5 = List<int>.generate(3, (index) => index * 10, growable: true);
+  print(list5);//[0, 10, 20]
+
+  //Set............................
+  Set<int> set1 = {10, 20, 10};
+  set1.add(40);
+  print(set1);//{10, 20, 40}
+
+  //Map...............
+  Map<String, String> map = {"one":"hello", "two":"world"};
+  print(map["one"]);
+  map.addEntries([
+    MapEntry("three", "aaa"),
+    MapEntry("four", "bbb")
+  ]);
+  print(map);//{one: hello, two: world, three: aaa, four: bbb}
+
+  Iterator<int> iterator = list2.iterator;
+  while(iterator.moveNext()){
+    print(iterator.current);
+  }
+
 }
