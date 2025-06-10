@@ -30,5 +30,7 @@ main(){
   a3 = "hello";
   a3 = null;
 
-  
+  //dynamic 은 null 을 포함한 개념..
+  dynamic a4 = 10;
+  a4 = null;
 }
