@@ -20,7 +20,7 @@ class User {
   //case 4
   // User(List<dynamic> args): this.name = args[0], this.age = args[1];
 
-  int calFun(int arg){
+  static int calFun(int arg){
     return arg * 10;
   }
   User(String name, int age): this.name = name, this.age = calFun(age);
