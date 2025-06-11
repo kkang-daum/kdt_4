@@ -1,4 +1,5 @@
 //case 1 - singleton..................
+
 class MyClass {
   int data = 0;
 
