@@ -82,5 +82,29 @@ class ChildWidgetState extends State<ChildWidget> with WidgetsBindingObserver{
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    count = Provider.of<int>(context);//부모의 데이터 획득..
+    print("ChildWidgetState... didChangeDependencies");
+  }
+  @override
+  Widget build(BuildContext context) {
+    print("ChildWidgetState... build");
+    return Text("I am child : $count");
+  }
+
+  //앱 전체의 라이프사이클 변경시에 호출..
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    switch(state){
+      case AppLifecycleState.resumed:
+      case AppLifecycleState.inactive:
+        print("applifecycle resume..");
+        break;
+      case AppLifecycleState.hidden:
+      case AppLifecycleState.paused:
+      case AppLifecycleState.detached:
+        print("applifecycle paused");
+        break;
+    }
   }
 }
