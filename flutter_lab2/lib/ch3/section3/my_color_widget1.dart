@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class MyColorWidget1 extends StatefulWidget {
   Color color;
-  MyColorWidget1(this.color);
+  MyColorWidget1(this.color, {Key? key}): super(key: key);
   @override
   State<StatefulWidget> createState() {
     return MyColorWidgetState1(color);
