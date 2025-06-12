@@ -44,6 +44,8 @@ dependencies:
   # pub upgrade 만 클릭하면.. 최신 버전 적용 가능.. 자동으로 4.1.1. 을 적용해준다..
   # 패키지 신규 등록.. 로컬에 다운로드 되어야 한다.. "pub get" 클릭해야 적용..
   provider: ^6.1.4
+  # 구글 폰트 이용하기 위한 패키지..
+  google_fonts: ^6.1.0
 
 
 dev_dependencies:

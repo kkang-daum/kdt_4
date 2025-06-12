@@ -43,7 +43,9 @@ class MyApp extends StatelessWidget {
                   fontFamily: 'myFontName',
                   fontSize: 16
                 ),
-            )
+            ),
+            //google font 에서 제공하는 패키지를 이용하면.. 다운로드 등록 필요 없다..
+            
           ],
         ),
       ),
