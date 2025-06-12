@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(MyApp());
 
@@ -45,7 +46,13 @@ class MyApp extends StatelessWidget {
                 ),
             ),
             //google font 에서 제공하는 패키지를 이용하면.. 다운로드 등록 필요 없다..
-            
+            Text(
+              '안녕하세요',
+              style: GoogleFonts.singleDay(
+                fontSize: 16,
+                fontWeight: FontWeight.bold
+              ),
+            )
           ],
         ),
       ),
