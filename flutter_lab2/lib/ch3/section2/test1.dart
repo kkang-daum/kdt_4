@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   String stateText = "disable";
 
   void changeCheck(){
+    print("changeCheck().....");
     if(enabled){
       stateText = "disable";
       enabled = false;
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
   //이 함수가 자동 호출.. 이 함수에서 리턴시킨 Widget 이 화면 출력..
   @override
   Widget build(BuildContext context) {
+    print("build........");
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
