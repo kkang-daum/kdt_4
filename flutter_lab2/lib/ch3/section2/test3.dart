@@ -108,3 +108,23 @@ class ChildWidgetState extends State<ChildWidget> with WidgetsBindingObserver{
     }
   }
 }
+//최초.....
+//I/flutter (12585): ChildWidget constructor...
+// I/flutter (12585): ChildWidgetState constructor....
+// I/flutter (12585): ChildWidgetState initState...
+// I/flutter (12585): ChildWidgetState... didChangeDependencies
+// I/flutter (12585): ChildWidgetState... build
+
+//부모 데이터 변경 순간마다...
+//위젯의 생성자는 다시 호출되었다.. 위젯은 불변이다.. 매번 생성된다..
+//State 객체는 다시 생성되지 않았다..
+//I/flutter (12585): ChildWidget constructor...
+// I/flutter (12585): ChildWidgetState... didChangeDependencies
+// I/flutter (12585): ChildWidgetState... build
+
+//앱을 화면에서 제거..
+//I/flutter (12585): applifecycle paused
+// I/flutter (12585): applifecycle paused
+
+//다시 앱을 화면에 출력..
+//I/flutter (12585): applifecycle resume..
