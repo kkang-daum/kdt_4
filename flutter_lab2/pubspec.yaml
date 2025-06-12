@@ -72,6 +72,23 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+    - images/
+    - images/icon/
+    - assets/text/
+
+  # font 를 별도로 등록하고 Text 에서 fontFamily 로 이름만 지칭해서 적용되게...
+  # family 에 주는 이름은 개발자 이름.. 등록하는 폰트를 이 이름으로 식별해서 사용하겠다..
+  fonts:
+    - family: myFontName
+      fonts:
+        - asset: assets/fonts/NanumPenScript-Regular.ttf
+          weight: 700
+
+    - family: myBasicFontName
+      fonts:
+        - asset: assets/fonts/Dokdo-Regular.ttf
+          weight: 300
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

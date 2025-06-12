@@ -1,0 +1,1 @@
+my_text.txt file - 안녕하세요.
