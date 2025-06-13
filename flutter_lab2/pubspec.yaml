@@ -47,6 +47,8 @@ dependencies:
   # 구글 폰트 이용하기 위한 패키지..
   google_fonts: ^6.1.0
   font_awesome_flutter: ^10.8.0
+  fluttertoast: ^8.2.12
+
 
 
 dev_dependencies:
