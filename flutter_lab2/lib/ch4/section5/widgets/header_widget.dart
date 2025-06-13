@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 const List<String> choices = [
   "신고", "공유하기", "링크 복사"
@@ -6,7 +7,15 @@ const List<String> choices = [
 
 class HeaderWidget extends StatelessWidget {
   void select(String choice){
-
+    Fluttertoast.showToast(
+        msg: choice,
+        toastLength: Toast.LENGTH_SHORT,
+        //아래의 속성은 플랫폼에 따라 적용이 안될 수도 있다..
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.blue,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
   }
   @override
   Widget build(BuildContext context) {
@@ -14,6 +23,7 @@ class HeaderWidget extends StatelessWidget {
       children: [
         Image.asset('images/lab_instagram_icon_0.jpg'),
         Text('instagram'),
+        Spacer(),
         PopupMenuButton<String>(
             //... 메뉴 클릭시의 이벤트 처리..
             onSelected: select,
