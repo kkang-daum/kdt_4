@@ -46,6 +46,7 @@ dependencies:
   provider: ^6.1.4
   # 구글 폰트 이용하기 위한 패키지..
   google_fonts: ^6.1.0
+  font_awesome_flutter: ^10.8.0
 
 
 dev_dependencies:
