@@ -87,7 +87,26 @@ class MyAppState extends State<MyApp>{
         appBar: AppBar(title: Text('dio test'),),
         body: RefreshIndicator(
           onRefresh: refresh,
-          child: ListView.separated(itemBuilder: itemBuilder, separatorBuilder: separatorBuilder, itemCount: itemCount),
+          child: ListView.separated(
+            controller: controller,
+            itemCount: datas.length,
+            itemBuilder: (context, index){
+              return ListTile(
+                contentPadding: EdgeInsets.all(5),
+                title: Text("${datas[index]["name"]["first"]} ${datas[index]["name"]["last"]}"),
+                subtitle: Text("${datas[index]["email"]}"),
+                leading: CircleAvatar(
+                  radius: 25,
+                  child: ClipOval(
+                    child: Image.network(datas[index]["picture"]["thumbnail"]),
+                  ),
+                ),
+              );
+            },
+            separatorBuilder: (context, index){
+              return Divider(height: 2, color: Colors.black,);
+            },
+          ),
         ),
       ),
     );
