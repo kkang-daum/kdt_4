@@ -32,6 +32,26 @@ class MyApp extends StatelessWidget {
         body: Center(
           child: FutureBuilder(
             future: calFun(),
+            builder: (context, snapshot){
+              if(snapshot.hasData){
+                return Center(
+                  child: Text('${snapshot.data}'),
+                );
+              }
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 100,
+                      height: 100,
+                      child: CircularProgressIndicator(),
+                    ),
+                    Text('waiting....'),
+                  ],
+                ),
+              );
+            },
           ),
         ),
       ),
