@@ -52,7 +52,7 @@ class MyAppState extends State<MyApp>{
     });
   }
   onPressEncode(){
-    //객체를.. json 문자열로... 
+    //객체를.. json 문자열로...
     setState(() {
       result = "encode : ${jsonEncode(todo)}";
     });
