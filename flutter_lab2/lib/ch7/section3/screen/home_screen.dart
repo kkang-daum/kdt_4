@@ -51,7 +51,9 @@ class HomeScreenState extends State<HomeScreen>
           return TabBarView(
             controller: controller,
             children: [
-              TodoList(model.todos)
+              TodoList(model.todos),
+              TodoList(model.todos.where((todo) => !todo.completed).toList()),
+              TodoList(model.todos.where((todo) => todo.completed).toList(),)
             ],
           );
         },
