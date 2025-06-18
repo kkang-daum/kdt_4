@@ -69,9 +69,36 @@ class TestWidget extends StatelessWidget {
     //위젯의 일부분이 상태와 관련있다.. 그 일부분을 위해 전체 위젯을 StatefulWidget 으로 만들기
     //부담스럽다..
     //StatefulBuilder 라는 위젯으로.. 상태에 의해 변경되는 부분을 대체..
-    //
     return StatefulBuilder(
-
+      //매개변수로.. 상태를 변경 화면을 update 할 수 있는 setState() 함수 전달..
+      builder: (BuildContext context, StateSetter setState){
+        MyInheritedWidget? widget = MyInheritedWidget.of(context);
+        int counter = MyInheritedWidget.of(context)!.count;
+        Function increment = MyInheritedWidget.of(context)!.increment;
+        return Center(
+          child: Container(
+            color: Colors.red,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text("counter : $counter"),
+                ElevatedButton(
+                  child: Text("increment"),
+                  onPressed: () => setState(() => increment()),
+                ),
+                ElevatedButton(
+                  child: Text("count++"),
+                  onPressed: (){
+                    setState(() => widget!.count++);
+                  },
+                ),
+                TestSubWidget(),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
