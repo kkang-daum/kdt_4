@@ -43,11 +43,43 @@ class ParentWidgetState extends State<ParentWidget>{
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             //자신의 상태를 자식이 이용.. 변경... 생성자 매개변수로 전달..
-            IconWidget(favorited: favorited, onChanged: toggleFavorite),
-            ContentWidget(favoriteCount: favoriteCount),
+            IconWidget(favorited, toggleFavorite),
+            ContentWidget(favoriteCount),
           ],
         ),
       ),
     );
+  }
+}
+
+class IconWidget extends StatelessWidget {
+  bool favorited;
+  Function onChanged;
+
+  IconWidget(this.favorited, this.onChanged);
+
+  void handleTap(){
+    onChanged();//부모의 함수 호출..
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: IconButton(
+          onPressed: handleTap,
+          icon: (favorited ? Icon(Icons.favorite) : Icon(Icons.favorite_border)),
+          iconSize: 200,
+          color: Colors.red,
+      ),
+    );
+  }
+}
+
+class ContentWidget extends StatelessWidget {
+  int favoritedCount;
+  ContentWidget(this.favoritedCount);
+  @override
+  Widget build(BuildContext context) {
+    return Text("favorted count : $favoritedCount");
   }
 }
