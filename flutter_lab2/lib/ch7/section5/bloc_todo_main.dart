@@ -10,10 +10,18 @@ class TodosApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //add.................................
-    return MaterialApp(
-      home: BlocProvider<TodoBloc>(
-        create: (context) => TodoBloc(),
-        child: HomeScreen(),
+    // return MaterialApp(
+    //   home: BlocProvider<TodoBloc>(
+    //     create: (context) => TodoBloc(),
+    //     child: HomeScreen(),
+    //   ),
+    // );
+
+
+    return BlocProvider<TodoBloc>(
+      create: (context) => TodoBloc(),
+      child: MaterialApp(
+        home: HomeScreen(),
       ),
     );
   }
