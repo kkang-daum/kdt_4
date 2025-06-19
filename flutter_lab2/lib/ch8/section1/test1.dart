@@ -14,6 +14,9 @@ class MyAppState extends State<MyApp>{
   String? resultMessage;//native 에 일시키고.. 넘어온 결과 데이터..
   String? receiveMessage;//native 에서 먼저 채널을 통해 전달한 데이터..
 
+  String? resultMethod;
+  String? receiveMethod;
+
   Future<Null> messageTest() async {
     //메시지 채널 준비.. native 와 동일이름으로 준비해야 한다..
     //원한다면 이름을 다르게 해서 하나의 앱에서 여러 채널을 이용해도 된다.
@@ -34,6 +37,27 @@ class MyAppState extends State<MyApp>{
     });
   }
 
+  Future<Null> methodTest() async {
+    var channel = MethodChannel("myMethodChannel");
+
+    //method 채널을 이용하면.. 단순 문자열이 아닌 데이터도 전달 가능..
+    var datas = {"Username":"kim", "Password":"1234"};
+    Map result = await channel.invokeMethod("oneMethod", datas);
+    setState(() {
+      resultMethod = "${result["one"]}, ${result["two"]}";
+    });
+
+    channel.setMethodCallHandler((call) async {
+      switch(call.method){
+        case "twoMethod":
+          setState(() {
+            receiveMethod = "receive : ${call.arguments}";
+          });
+          return "reply from Dart";
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -44,6 +68,10 @@ class MyAppState extends State<MyApp>{
             Text("resultMessage : $resultMessage"),
             Text("receiveMessage $receiveMessage"),
             ElevatedButton(onPressed: messageTest, child: Text("message call")),
+
+            Text("resultMethod : $resultMethod"),
+            Text("receiveMethod $receiveMethod"),
+            ElevatedButton(onPressed: methodTest, child: Text("method call")),
           ],
         ),
       ),

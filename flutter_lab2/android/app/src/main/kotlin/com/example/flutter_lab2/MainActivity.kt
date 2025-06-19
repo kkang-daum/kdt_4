@@ -4,6 +4,7 @@ import android.util.Log
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.BasicMessageChannel
+import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.StringCodec
 import io.flutter.plugins.GeneratedPluginRegistrant
 
@@ -25,6 +26,21 @@ class MainActivity : FlutterActivity(){
             channel.send("Hello from Android"){ result ->
                 //dart 의 리턴...
                 Log.d("kkang", "reply : $result")
+            }
+        }
+
+        //method channel................................
+        val methodChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger,
+            "myMethodChannel")
+        methodChannel.setMethodCallHandler { call, result ->
+            Log.d("kkang", "111111111111111")
+            if(call.method == "oneMethod"){
+                val map = call.arguments as Map<String, String>
+                Log.d("kkang", "${map.get("Username")}, ${map.get("Password")}")
+                result.success(mapOf("one" to 10, "two" to 20));
+
+                //navtive -> dart......
+                methodChannel.invokeMethod("twoMethod", "Hello from Android")
             }
         }
     }
