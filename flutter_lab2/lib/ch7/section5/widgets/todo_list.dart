@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
-
-
-
+import 'package:flutter_lab2/ch7/section5/widgets/todo_list_item.dart';
+import '../state/todo_state.dart';
 
 
 class TodoList extends StatelessWidget {
@@ -18,5 +16,7 @@ class TodoList extends StatelessWidget {
   }
 
   //add...................
-  
+  List<Widget> getChildrenTodos(){
+    return todos.map((todo) => TodoListItem(todo: todo)).toList();
+  }
 }

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_lab2/ch7/section5/bloc/todo_bloc.dart';
+import '../state/todo_state.dart';
+import '../widgets/todo_list.dart';
 
 
 
@@ -64,7 +68,18 @@ class _HomeScreenState extends State<HomeScreen>
       ),
       body:
       //add...............................
-      
+      BlocBuilder<TodoBloc, TodoState>(
+        builder: (context, state){
+          return TabBarView(
+            controller: controller,
+            children: [
+              TabScreen(state.todos),
+              TabScreen(state.todos.where((todo) => !todo.completed).toList()),
+              TabScreen(state.todos.where((todo) => todo.completed).toList()),
+            ],
+          );
+        },
+      )
     );
 
 
