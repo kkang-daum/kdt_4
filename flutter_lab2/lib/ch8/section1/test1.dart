@@ -33,4 +33,20 @@ class MyAppState extends State<MyApp>{
       return "reply from dart";
     });
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("native call"),),
+        body: Column(
+          children: [
+            Text("resultMessage : $resultMessage"),
+            Text("receiveMessage $receiveMessage"),
+            ElevatedButton(onPressed: messageTest, child: Text("message call")),
+          ],
+        ),
+      ),
+    );
+  }
 }
