@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tripapp/providers/user_provider.dart';
 import 'package:tripapp/routes/app_routes.dart';
 import 'package:tripapp/screens/myinfo/myinfo_empty_state_widget.dart';
 import 'package:tripapp/screens/myinfo/myinfo_form_widget.dart';
@@ -15,6 +17,15 @@ class MyInfoScreen extends StatefulWidget {
 
 class MyInfoScreenState extends State<MyInfoScreen>{
   bool _showForm = false;//화면에 출력되는 위젯을 조정하기 위한 상태..
+
+  @override
+  void initState() {
+    super.initState();
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    if(userProvider.userInfo != null){
+      _showForm = true;
+    }
+  }
 
   void handleShowForm(bool shouldShow){
     setState(() {
