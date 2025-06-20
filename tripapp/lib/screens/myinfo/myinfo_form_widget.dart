@@ -80,5 +80,65 @@ class MyInfoFormWidgetState extends State<MyInfoFormWidget>{
     );
   }
 
-  void showImage
+  void showImagePickerDialog(){
+    showDialog(
+        context: context,
+        builder: (context){
+          return AlertDialog(
+            title: Text("프로필 사진 선택"),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
+                  leading: Icon(Icons.camera),
+                  title: Text("카메라로 촬영"),
+                  onTap: (){
+                    Navigator.pop(context);//dialog close
+                    pickImage(ImageSource.camera);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.photo_library),
+                  title: Text("갤러리에서 선택"),
+                  onTap: (){
+                    Navigator.pop(context);//dialog close
+                    pickImage(ImageSource.gallery);
+                  },
+                ),
+              ],
+            ),
+          );
+        }
+    );
+  }
+
+  Future<void> pickImage(ImageSource source) async {
+    try {
+      XFile? image = await picker.pickImage(source: source);
+      if(image != null){
+        setState(() {
+          profileImagePath = image.path;
+        });
+      }
+    }catch (e){
+      print("$e");
+    }
+  }
+
+  void saveUserInfo() async {
+    if(nameController.text.trim().isEmpty && emailController.text.trim().isEmpty){
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("이름 또는 이메일을 입력해 주세요."))
+      );
+      return;
+    }
+
+    try {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("사용자 정보가 저장되었습니다."))
+      );
+    }catch (e){
+      print("$e");
+    }
+  }
 }
