@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tripapp/providers/trip_provider.dart';
+import 'package:tripapp/screens/home/home_grid_widget.dart';
 import 'package:tripapp/screens/home/home_middle_widget.dart';
 import 'package:tripapp/screens/home/home_top_widget.dart';
 
@@ -25,6 +28,14 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   HomeMiddleWidget(),
+                  SizedBox(height: 16,),
+                  Expanded(
+                    child: Consumer<TripProvider>(
+                      builder: (context, tripProvider, child){
+                        return HomeGridWidget(tripProvider.destinations);
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),
