@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tripapp/routes/app_routes.dart';
 import 'package:tripapp/screens/myinfo/myinfo_empty_state_widget.dart';
+import 'package:tripapp/screens/myinfo/myinfo_form_widget.dart';
 
 
 //사용자 설정 정보가 있는지에 따라.. 화면에 출력되는 위젯을 다르게..
@@ -16,7 +17,9 @@ class MyInfoScreenState extends State<MyInfoScreen>{
   bool _showForm = false;//화면에 출력되는 위젯을 조정하기 위한 상태..
 
   void handleShowForm(bool shouldShow){
-    
+    setState(() {
+      _showForm = shouldShow;
+    });
   }
   
   @override
@@ -42,7 +45,9 @@ class MyInfoScreenState extends State<MyInfoScreen>{
           )
         ],
       ),
-      body: MyInfoEmptyStateWidget(handleShowForm),
+      body: _showForm
+        ? MyInfoFormWidget()
+          : MyInfoEmptyStateWidget(handleShowForm),
     );
   }
 }
