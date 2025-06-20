@@ -2,6 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+import 'package:tripapp/models/user_info.dart';
+import 'package:tripapp/providers/user_provider.dart';
 
 class MyInfoFormWidget extends StatefulWidget{
   @override
@@ -15,6 +18,18 @@ class MyInfoFormWidgetState extends State<MyInfoFormWidget>{
   var emailController = TextEditingController();
   String? profileImagePath;
   ImagePicker picker = ImagePicker();
+
+  //초기.. 앱의 데이터가 있다면.. 그 데이터를 구해서.. 화면 출력..
+  @override
+  void initState() {
+    super.initState();
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    if(userProvider.userInfo != null){
+      nameController.text = userProvider.userInfo!.name ?? '';
+      emailController.text = userProvider.userInfo!.email ?? '';
+      profileImagePath = userProvider.userInfo!.profileImagePath;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +148,16 @@ class MyInfoFormWidgetState extends State<MyInfoFormWidget>{
       return;
     }
 
+    //저장하고자 하는 데이터 준비..
+    final userInfo = UserInfo(
+      name: nameController.text.trim().isEmpty ? null : nameController.text.trim(),
+      email: emailController.text.trim().isEmpty ? null : emailController.text.trim(),
+      profileImagePath: profileImagePath,
+    );
+
     try {
+      await Provider.of<UserProvider>(context, listen: false).updateUserInfo(userInfo);
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("사용자 정보가 저장되었습니다."))
       );
