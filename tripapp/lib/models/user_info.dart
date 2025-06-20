@@ -16,5 +16,11 @@ class UserInfo {
     };
   }
   //db select.. db 데이터로 객체가 생성되게..
-  factory UserInfo
+  factory UserInfo.fromMap(Map<String, dynamic> map){
+    return UserInfo(
+      name: map['name'],
+      email: map['email'],
+      profileImagePath: map['profileImagePath']
+    );
+  }
 }
