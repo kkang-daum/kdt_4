@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:tripapp/providers/trip_provider.dart';
 import 'package:tripapp/routes/app_routes.dart';
 import 'package:tripapp/screens/home_screen.dart';
+import 'package:tripapp/screens/myinfo_screen.dart';
 
 main() {
   runApp(TripApp());
@@ -25,6 +26,7 @@ class TripApp extends StatelessWidget {
         initialRoute: AppRoutes.home,
         routes: {
           AppRoutes.home: (context) => HomeScreen(),
+          AppRoutes.myInfo: (context) => MyInfoScreen(),
         },
       ),
     );

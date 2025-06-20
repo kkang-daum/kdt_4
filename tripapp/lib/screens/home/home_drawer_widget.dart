@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tripapp/routes/app_routes.dart';
 
 class HomeDrawer extends StatelessWidget{
   @override
@@ -25,7 +26,10 @@ class HomeDrawer extends StatelessWidget{
           ListTile(
             leading: Icon(Icons.person),
             title: Text("MyInfo"),
-            onTap: (){},
+            onTap: (){
+              Navigator.pop(context);
+              Navigator.pushNamed(context, AppRoutes.myInfo);
+            },
           )
         ],
       ),
