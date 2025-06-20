@@ -35,6 +35,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   provider: ^6.1.5
+  # 각 플랫폼에 맞는 패스 경로를 만들어주는 패키지...
+  path: ^1.8.3
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:
