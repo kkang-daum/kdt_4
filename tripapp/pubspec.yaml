@@ -38,6 +38,7 @@ dependencies:
   # 각 플랫폼에 맞는 패스 경로를 만들어주는 패키지...
   path: ^1.8.3
   image_picker: ^1.1.2
+  sqflite: ^2.3.0
 
 dev_dependencies:
   flutter_test:

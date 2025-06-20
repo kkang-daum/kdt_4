@@ -30,7 +30,7 @@ class MyInfoFormWidgetState extends State<MyInfoFormWidget>{
                   radius: 60,
                   backgroundImage: profileImagePath != null ?
                         FileImage(File(profileImagePath!))
-                      : AssetImage("assets/images/default_profile.png") as ImageProvider
+                      : AssetImage("assets/images/user_basic.png") as ImageProvider
                 ),
                 Positioned(
                   bottom: 0,
