@@ -56,9 +56,15 @@ class MyInfoScreenState extends State<MyInfoScreen>{
           )
         ],
       ),
-      body: _showForm
-        ? MyInfoFormWidget()
-          : MyInfoEmptyStateWidget(handleShowForm),
+      body: Consumer<UserProvider>(
+        builder: (context, userProvider, child){
+          if(!userProvider.hasUserInfo && !_showForm){
+            return MyInfoEmptyStateWidget(handleShowForm);
+          }else {
+            return MyInfoFormWidget();
+          }
+        },
+      ),
     );
   }
 }
